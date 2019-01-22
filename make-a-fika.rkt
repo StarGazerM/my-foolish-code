@@ -21,7 +21,7 @@
 
 ;; function length, calculate the length of list
 (claim step-length
-  (Pi ((E U))
+  (Π ((E U))
     (-> E (List E) Nat
        Nat)))
 (define step-length
@@ -30,7 +30,7 @@
       (add1 length_es))))
 
 (claim length
-  (Pi ((E U))
+  (Π ((E U))
     (-> (List E)
        Nat)))
 (define length
@@ -60,7 +60,7 @@
 ;; mot here is a type transfomer to define what type
 ;; we actually want
 (claim mot-list->vec
-  (Pi ((E U))
+  (Π ((E U))
     (-> (List E)
        U)))
 (define mot-list->vec
@@ -71,7 +71,7 @@
 ;; almost answer in elminator, work like pattern match
 ;; and repack to type
 (claim step-list->vec
-  (Pi ((E U)
+  (Π ((E U)
            (e E)
            (es (List E)))
     (-> (mot-list->vec E es)
@@ -82,7 +82,7 @@
       (vec:: e list->vec_es))))
 
 (claim list->vec
-  (Pi ((E U)
+  (Π ((E U)
            (es (List E)))
     (Vec E (length  E es))))
 (define list->vec
@@ -97,7 +97,7 @@
 ;;  so only "k" is used here. If j is to be used, we will be
 ;; force to retrun a λ which is unnecessary
 (claim mot-vec-append
-  (Pi ((E U)
+  (Π ((E U)
            (_j Nat)
            (k Nat))
     (-> (Vec E k)
@@ -108,7 +108,7 @@
       (Vec E (+ k j)))))
 
 (claim step-vec-append
-  (Pi ((E U)
+  (Π ((E U)
            (j Nat)
            (k Nat)
            (e E)
@@ -125,7 +125,7 @@
 ;; base case here is the other list we want to
 ;; append at the end
 (claim  vec-append
-  (Pi ((E U)
+  (Π ((E U)
            (l Nat)
            (j Nat))
     (-> (Vec E l) (Vec E j)
@@ -141,7 +141,7 @@
 
 ;; function vec->list
 (claim mot-vec->list
-  (Pi ((E U)
+  (Π ((E U)
            (l Nat))
     (-> (Vec E l)
        U)))
@@ -151,7 +151,7 @@
       (List E))))
 
 (claim step-vec->list
-  (Pi ((E U)
+  (Π ((E U)
            (l-1 Nat)
            (e E)
            (es (Vec E l-1)))
@@ -165,7 +165,7 @@
       (:: e vec->list_l-1))))
 
 (claim vec->list
-  (Pi ((E U)
+  (Π ((E U)
            (l Nat))
     (-> (Vec E l)
        (List E))))
@@ -192,7 +192,7 @@
 ;; One way is check when it transformed back, it will
 ;; not change (OwO), naive but useful
 (claim  list->vec->list=
-  (Pi ((E U)
+  (Π ((E U)
            (es (List E)))
     (= (List E)
       es
@@ -206,7 +206,7 @@
 ;; the motive here is trans to the type we
 ;; interest, which is (=) type
 (claim mot-list->vec->list=
-  ( Pi ((E U))
+  ( Π ((E U))
      (-> (List E)
         U)))
 (define mot-list->vec->list=
@@ -223,7 +223,7 @@
 ;; and then use "cong" we can eliminate "=" claim.
 ;; (es in n-1 step is needed to induct to n step)
 (claim ::-fun
-  (Pi ((E U))
+  (Π ((E U))
     (-> E (List E)
        (List E))))
 (define ::-fun
@@ -232,7 +232,7 @@
       (:: e es))))
 
 (claim step-list->vec->list=
-  (Pi ((E U)
+  (Π ((E U)
            (e E)
            (es (List E)))
     (-> (mot-list->vec->list= E
