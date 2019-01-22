@@ -1,0 +1,13 @@
+#lang pie
+
+(claim list->vec
+  (Pi ((E U))
+    (-> (List E)
+       (Sigma ((l Nat))
+         (Vec E l)))))
+(define list->vec
+  (λ (E)
+    (λ (es)
+      (rec-List es
+        (cons 0 vecnil)
+        TODO))))
