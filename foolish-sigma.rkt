@@ -108,6 +108,15 @@
     (cons (car e_n)
       (cong (cdr e_n) (+ 1)))))
 
+;; THIS IS A MIRROR  (OwO)
+(claim add1-odd->even
+  (Π ((n Nat))
+    (-> (Odd n)
+     (Even (add1 n)))))
+(define add1-odd->even
+  (λ (n o_n)
+    (cons (add1 (car o_n))
+      (cong (cdr o_n) (+ 1)))))
 
 ;; --------------------------------------------------------------------------------------------
 ;; just a repeat
@@ -133,6 +142,99 @@
       (+ 1)
       (λ (ackermann_n-1)
         (repeat ackermann_n-1)))))
+
+;; ackermann is total!!! what!!!!
+
+;; ---------------------------------------------------------------
+;; emmmm
+;; maybe it's the most complecated "Either" code I've ever seen!!!
+
+;; fine, let's give a proof to a foolish statement
+;; every Nat is Even or Double
+;; easyyyyyyy!
+;; 0 is even, and every add1 will make a change!
+;; ind-Nat will help a lot here.
+(claim even-or-odd
+  (Π ((n Nat))
+    (Either (Even n) (Odd n))))
+
+;; base case is zero, zero is even
+
+;; we want to do some calculate on Either, so
+;; it is clear we need to match it's eliminator
+;; our purpose is get the data inside (Even/Odd)
+;; Oh ! it's prepared for iter EVERY Nat.
+(claim mot-even-or-odd
+  (-> Nat
+     U))
+(define mot-even-or-odd
+  (λ (k)
+    (Either (Even k) (Odd k))))
+
+(claim step-even-or-odd
+  (Π ((n-1 Nat))
+    (-> (mot-even-or-odd n-1)
+       (mot-even-or-odd (add1 n-1)))))
+;; emmmm, actually we don't need mot here,
+;; when we are consider eliminate Either level
+;; we are not asking for some other type in this
+;; case.
+;; ha, that's foolish.
+(define step-even-or-odd
+  (λ (n-1)
+    (λ (e-or-o_n-1)
+      (ind-Either e-or-o_n-1
+        (λ (e-or-o)
+          (mot-even-or-odd (add1 n-1)))
+        (λ (e_n-1)
+          (right
+            (add1-even->odd
+              n-1 e_n-1)))
+        (λ (o_n-1)
+          (left
+            (add1-odd->even
+              n-1 o_n-1)))))))
+
+;; get it!
+(define even-or-odd
+  (λ (n)
+    (ind-Nat n
+      mot-even-or-odd
+      (left zero-is-even)
+      step-even-or-odd)))
+
+
+#|
+> (even-or-odd 2)
+(the (Either (Σ ((half Nat))
+              (= Nat
+                2
+                (iter-Nat half
+                   (the Nat 0)
+                   (λ (j)
+                     (add1 (add1 j))))))
+       (Σ ((haf Nat))
+        (= Nat
+          2
+          (add1 (iter-Nat haf
+                   (the Nat 0)
+                   (λ (j)
+                     (add1 (add1 j))))))))
+  (left (cons 1
+          (same 2))))
+|#
+;; emmmmmmmm the type is long, read the value!!!
+#|
+(left (cons 1
+          (same 2))))
+|#
+;; wow!!!!!!!!! it's an proved even number!
+
+
+
+
+
+
 
 
 
