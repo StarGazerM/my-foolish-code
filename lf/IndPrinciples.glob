@@ -1,0 +1,11 @@
+DIGEST 2847447aae3541744445851655b35de3
+FLF.IndPrinciples
+R69:80 LF.ProofObjects <> <> lib
+R91:97 Coq.Init.Datatypes <> nat_ind scheme
+prf 109:117 <> mult_0_r'
+R130:132 Coq.Init.Datatypes <> nat ind
+R144:146 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R140:142 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R139:139 LF.IndPrinciples <> n var
+R165:171 Coq.Init.Datatypes <> nat_ind scheme
+R165:171 Coq.Init.Datatypes <> nat_ind scheme
