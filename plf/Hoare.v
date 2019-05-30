@@ -68,3 +68,22 @@ Definition assn_sub X a P: Assertion :=
 
 Notation "P [ X |-> a ]" := (assn_sub X a P)
   (at level 10, X at next level).
+
+
+Theorem hoare_asgn : forall Q X a,
+    {{Q [ X |-> a]}} X ::= a {{Q}}.
+Proof.
+  unfold hoare_triple.
+  intros.
+  inversion H;subst.
+  unfold assn_sub in H0.
+  assumption.
+Qed.
+
+Example assn_sub_example:
+  {{(fun st => st X < 5)[X |-> X + 1]}}
+  X ::= X + 1
+  {{fun st => st X < 5}}.
+Proof.
+  apply hoare_asgn. Qed.
+
