@@ -142,3 +142,44 @@ Proof.
   intros. inversion H. assumption.
 Qed.
 
+Lemma bool_canonical : forall t,
+  |- t ∈ Bool -> value t -> bvalue t.
+Proof.
+  intros t HT [Hb | Hn].
+  - assumption.
+  - induction Hn; inversion HT; auto.
+Qed.
+
+Lemma nat_canonical : forall t,
+  |- t ∈ Nat -> value t -> nvalue t.
+Proof.
+  intros t HT [Hb | Hn].
+  - inversion Hb; subst; inversion HT.
+  - assumption.
+Qed.
+
+Theorem progress : forall t T,
+  |- t ∈ T ->
+    value t \/ exists t', t --> t'.
+Proof with auto.
+  intros t T HT.
+  induction HT...
+  (* The cases that were obviously values, like T_Tru and
+     T_Fls, were eliminated immediately by auto *)
+  - (* T_Test *)
+    right. inversion IHHT1; clear IHHT1.
+    + (* t1 is a value *)
+    apply (bool_canonical t1 HT1) in H.
+    inversion H; subst; clear H.
+      exists t2...
+      exists t3...
+    + (* t1 can take a step *)
+      inversion H as [t1' H1].
+      exists (test t1' t2 t3)...
+  - inversion IHHT.
+    inversion H; subst.
+    inversion H0;subst.
+    inversion HT. inversion HT.
+    left. auto.
+    right. destruct H. inversion H; subst; inversion HT;subst; eauto.
+  - 
