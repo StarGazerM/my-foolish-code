@@ -1,4 +1,4 @@
-DIGEST 69f7f6ce7ddbfb0c3f9e6488d0e73131
+DIGEST 1b05cc3dc1a7e0c881a15c0e8c9985bd
 FPLF.Types
 R70:80 Coq.Arith.Arith <> <> lib
 R107:110 PLF.Maps <> <> lib
@@ -329,3 +329,43 @@ R3259:3263 PLF.Types <> :::'|-'_x_'∈'_x not
 R3254:3256 PLF.Types <> scc constr
 R3258:3258 PLF.Types <> t var
 R3264:3266 PLF.Types <> Nat constr
+prf 3341:3354 <> bool_canonical
+R3383:3386 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3394:3397 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3398:3403 PLF.Types <> bvalue ind
+R3405:3405 PLF.Types <> t var
+R3387:3391 PLF.Types <> value def
+R3393:3393 PLF.Types <> t var
+R3370:3372 PLF.Types <> :::'|-'_x_'∈'_x not
+R3374:3378 PLF.Types <> :::'|-'_x_'∈'_x not
+R3373:3373 PLF.Types <> t var
+R3379:3382 PLF.Types <> Bool constr
+prf 3506:3518 <> nat_canonical
+R3546:3549 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3557:3560 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3561:3566 PLF.Types <> nvalue ind
+R3568:3568 PLF.Types <> t var
+R3550:3554 PLF.Types <> value def
+R3556:3556 PLF.Types <> t var
+R3534:3536 PLF.Types <> :::'|-'_x_'∈'_x not
+R3538:3542 PLF.Types <> :::'|-'_x_'∈'_x not
+R3537:3537 PLF.Types <> t var
+R3543:3545 PLF.Types <> Nat constr
+prf 3672:3679 <> progress
+R3707:3714 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3722:3725 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R3715:3719 PLF.Types <> value def
+R3721:3721 PLF.Types <> t var
+R3726:3732 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R3735:3736 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R3738:3742 PLF.Types <> :::x_'-->'_x not
+R3737:3737 PLF.Types <> t var
+R3743:3744 PLF.Types <> t' var
+R3697:3699 PLF.Types <> :::'|-'_x_'∈'_x not
+R3701:3705 PLF.Types <> :::'|-'_x_'∈'_x not
+R3700:3700 PLF.Types <> t var
+R3706:3706 PLF.Types <> T var
+R4003:4016 PLF.Types <> bool_canonical thm
+R4003:4016 PLF.Types <> bool_canonical thm
+R4179:4182 PLF.Types <> test constr
+R4179:4182 PLF.Types <> test constr

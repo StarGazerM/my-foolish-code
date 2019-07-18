@@ -10,7 +10,13 @@ Imp.vo Imp.glob Imp.v.beautified: Imp.v Maps.vo
 Imp.vio: Imp.v Maps.vio
 Maps.vo Maps.glob Maps.v.beautified: Maps.v
 Maps.vio: Maps.v
+MoreStlc.vo MoreStlc.glob MoreStlc.v.beautified: MoreStlc.v Maps.vo Types.vo Smallstep.vo Stlc.vo
+MoreStlc.vio: MoreStlc.v Maps.vio Types.vio Smallstep.vio Stlc.vio
 Smallstep.vo Smallstep.glob Smallstep.v.beautified: Smallstep.v Maps.vo Imp.vo
 Smallstep.vio: Smallstep.v Maps.vio Imp.vio
+StlcProp.vo StlcProp.glob StlcProp.v.beautified: StlcProp.v Maps.vo Types.vo Stlc.vo Smallstep.vo
+StlcProp.vio: StlcProp.v Maps.vio Types.vio Stlc.vio Smallstep.vio
+Stlc.vo Stlc.glob Stlc.v.beautified: Stlc.v Maps.vo Smallstep.vo
+Stlc.vio: Stlc.v Maps.vio Smallstep.vio
 Types.vo Types.glob Types.v.beautified: Types.v Maps.vo Imp.vo Smallstep.vo
 Types.vio: Types.v Maps.vio Imp.vio Smallstep.vio
