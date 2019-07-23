@@ -18,5 +18,9 @@ StlcProp.vo StlcProp.glob StlcProp.v.beautified: StlcProp.v Maps.vo Types.vo Stl
 StlcProp.vio: StlcProp.v Maps.vio Types.vio Stlc.vio Smallstep.vio
 Stlc.vo Stlc.glob Stlc.v.beautified: Stlc.v Maps.vo Smallstep.vo
 Stlc.vio: Stlc.v Maps.vio Smallstep.vio
+Sub.vo Sub.glob Sub.v.beautified: Sub.v Maps.vo Types.vo Smallstep.vo
+Sub.vio: Sub.v Maps.vio Types.vio Smallstep.vio
+Typechecking.vo Typechecking.glob Typechecking.v.beautified: Typechecking.v Maps.vo Smallstep.vo Stlc.vo MoreStlc.vo
+Typechecking.vio: Typechecking.v Maps.vio Smallstep.vio Stlc.vio MoreStlc.vio
 Types.vo Types.glob Types.v.beautified: Types.v Maps.vo Imp.vo Smallstep.vo
 Types.vio: Types.v Maps.vio Imp.vio Smallstep.vio
