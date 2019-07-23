@@ -12,6 +12,8 @@ Maps.vo Maps.glob Maps.v.beautified: Maps.v
 Maps.vio: Maps.v
 MoreStlc.vo MoreStlc.glob MoreStlc.v.beautified: MoreStlc.v Maps.vo Types.vo Smallstep.vo Stlc.vo
 MoreStlc.vio: MoreStlc.v Maps.vio Types.vio Smallstep.vio Stlc.vio
+Records.vo Records.glob Records.v.beautified: Records.v Maps.vo Imp.vo Smallstep.vo Stlc.vo
+Records.vio: Records.v Maps.vio Imp.vio Smallstep.vio Stlc.vio
 Smallstep.vo Smallstep.glob Smallstep.v.beautified: Smallstep.v Maps.vo Imp.vo
 Smallstep.vio: Smallstep.v Maps.vio Imp.vio
 StlcProp.vo StlcProp.glob StlcProp.v.beautified: StlcProp.v Maps.vo Types.vo Stlc.vo Smallstep.vo
