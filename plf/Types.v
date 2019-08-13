@@ -161,25 +161,61 @@ Qed.
 Theorem progress : forall t T,
   |- t ∈ T ->
     value t \/ exists t', t --> t'.
-Proof with auto.
+Proof with eauto.
   intros t T HT.
   induction HT...
   (* The cases that were obviously values, like T_Tru and
      T_Fls, were eliminated immediately by auto *)
   - (* T_Test *)
-    right. inversion IHHT1; clear IHHT1.
-    + (* t1 is a value *)
-    apply (bool_canonical t1 HT1) in H.
-    inversion H; subst; clear H.
-      exists t2...
-      exists t3...
-    + (* t1 can take a step *)
-      inversion H as [t1' H1].
-      exists (test t1' t2 t3)...
+    right. inversion IHHT1.
+    (* t1 is a value *)
+    apply bool_canonical in H...
+    inversion H...
+    (* t1 can take a step *)
+    destruct H...
   - inversion IHHT.
-    inversion H; subst.
-    inversion H0;subst.
-    inversion HT. inversion HT.
-    left. auto.
-    right. destruct H. inversion H; subst; inversion HT;subst; eauto.
-  Admitted.
+    apply nat_canonical in H...
+    right. destruct H...
+  - inversion IHHT.
+    apply nat_canonical in H...
+    right. inversion H...
+    right. destruct H...
+  - inversion IHHT.
+    apply nat_canonical in H...
+    right. inversion H...
+    right. destruct H...
+Qed.
+
+Theorem preservation : forall t t' T,
+  |- t ∈ T ->
+  t --> t' ->
+  |- t' ∈ T.
+Proof with auto.
+  intros.
+  generalize dependent t'.
+  induction H; intros; try solve_by_invert 1.
+  - inversion H2; subst...
+  - inversion H0; subst...
+  - inversion H0; subst...
+    inversion H;subst...
+  - inversion H0...
+Qed.
+
+Definition multistep := (multi step).
+Notation "t1 '-->*' t2" := (multistep t1 t2) (at level 40).
+
+Print multi.
+Print stuck.
+
+Corollary soundness : forall t t' T,
+  |- t ∈ T ->
+  t -->* t' ->
+  not (stuck t').
+Proof.
+  intros t t' T HT P.
+  induction P; intros [R S].
+  destruct (progress x T HT); auto.
+  apply IHP. apply (preservation x y T HT H).
+  unfold stuck. split; auto. Qed.
+
+

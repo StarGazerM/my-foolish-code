@@ -101,10 +101,10 @@ Theorem ev_sum : forall n m,
     even n -> even m -> even (n+m).
 Proof.
   intros n m En Em.
-  induction En as [| n' En' EnIHn].
+  induction En.
   - simpl. apply Em.
   - simpl. apply ev_SS.
-    apply  EnIHn.
+    assumption.
 Qed.
 
 Theorem ev_ev_ev : forall n m,
@@ -118,7 +118,28 @@ Proof.
     apply H0.
 Qed.
 
+Print double.
 
+Theorem double_injective: forall n m,
+    double n = double m -> n = m.
+Proof.
+  intros.
+  generalize dependent m.
+  induction n;intros.
+  simpl in H. destruct m. auto. simpl in H. inversion H.
+  destruct m. simpl in H. inversion H.
+  simpl in H. inversion H.
+  apply IHn in H1. rewrite H1. auto. Qed.
+  
+
+Lemma le_trans : forall m n o, m <= n -> n <= o -> m <= o.
+Proof.
+  intros.
+  induction H.
+  - assumption.
+  - apply IHle.
+    Search (S _ <= _ -> _ <= _).
+    apply Le.le_Sn_le. assumption. Qed.
 
 
 

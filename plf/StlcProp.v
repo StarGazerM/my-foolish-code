@@ -39,7 +39,8 @@ Module STLCProp.
     - (* T_App *)
       (* t = t1 t2.  Proceed by cases on whether t1 is a
        value or steps... *)
-      right. destruct IHHt1...
+      right.
+      destruct IHHt1...
       + (* t1 is a value *)
         destruct IHHt2...
         * (* t2 is also a value *)
@@ -128,7 +129,7 @@ Module STLCProp.
   Proof with eauto.
     intros.
     generalize dependent Gamma'.
-    induction H; intros; auto.
+    induction H; intros...
     - (* T_Var *)
       apply T_Var. rewrite <- H0...
     - (* T_Abs *)

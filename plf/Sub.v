@@ -1008,7 +1008,10 @@ Lemma sub_inversion_Bool : forall U,
 Proof with auto.
   intros U Hs.
   remember Bool as V.
-  (* FILL IN HERE *) Admitted.
+  induction Hs; (try inversion HeqV)...
+  - assert (U = T). apply IHHs2 in HeqV...
+    subst. apply IHHs1. reflexivity.
+  Qed.
 (** [] *)
 
 (** **** Exercise: 3 stars, standard (sub_inversion_arrow)  *)
@@ -1020,6 +1023,29 @@ Proof with eauto.
   intros U V1 V2 Hs.
   remember (Arrow V1 V2) as V.
   generalize dependent V2. generalize dependent V1.
+  induction Hs; intros...
+  - apply IHHs2 in HeqV.
+    destruct HeqV as [U1 Hv].
+    destruct Hv as [U2 Hv].
+    destruct Hv as [Ha Hsub1].
+    destruct Hsub1 as [Hsub1 Hsub2].
+    apply IHHs1 in Ha.
+    destruct Ha as [U0 Hsa].
+    destruct Hsa as [U3 Hsa].
+    destruct Hsa.
+    destruct H0.
+    exists U0, U3. split...
+  - inversion HeqV.
+  - inversion HeqV. subst.
+    exists S1, S2. split...
+Qed.
+
+
+
+  
+    exists x, x0. split...
+
+
   (* FILL IN HERE *) Admitted.
 (** [] *)
 
