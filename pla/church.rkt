@@ -50,6 +50,7 @@
      (λ (f) (λ (x)
        ((n (m f)) x))))))
 
+
 ;; boolean
 ;; cause boolean is something used to condition check, we can make it
 ;; a function can work with ture and false callback, #t just return
@@ -80,6 +81,13 @@
 (define (church:cons a b)
   `(λ (wcons) (λ (wnull) (wcons ,a ,b))))
 
+;; we can use of both U and Y combinator to implement this
+;; Y is a fixpoint, just fix in Coq
+(define (u-comb f) (f f))
+(define y-comb
+  (u-comb (λ (y) (λ (f)
+                     (f (λ (x) (((y y) f) x)))))))
+
 ;; now let's dealing with s-expr in core scheme data
 (define (churchify expr)
   ;; (displayln expr)
@@ -97,6 +105,18 @@
     ;; variable
     [(? symbol? var) ;=>
      var]
+    ;; let binding is a lambda
+    [`(let* ([,(? symbol? name) ,(? expr? bind-body)])
+        ,(? expr? body))
+     `((λ (,name) ,(churchify body)) ,(churchify bind-body))]
+    [`(let* ([,(? symbol? name) ,(? expr? bind-body)] . ,res)
+        ,(? expr? body))
+     `((λ (,name) ,(churchify `(let* (,res) ,body))) ,(churchify bind-body))]
+    ;; TODO: implement multi-clause letrec
+    [`(letrec ([,(? symbol? name) ,(? expr? bind-body)])
+         ,(? expr? body))
+      (churchify `(let* ([,name (,y-comb (λ (,name) ,bind-body))])
+                    ,body))]
     ;; condition
     [`(if ,e0 ,e1 ,e2) ;=>
      `((,(churchify e0) (λ (_) ,(churchify e1))) (λ (_) ,(churchify e2)))]
