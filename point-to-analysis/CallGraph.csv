@@ -1,3 +1,3 @@
-{fun1();}	fun1
-{a1.setSome(b1);}	setSome
-{c1 = a1.getSome();}	getSome
+(func1 ())	func1
+(a1 DOT setSome (b1))	setSome
+(c1 = a1 DOT getSome ())	getSome

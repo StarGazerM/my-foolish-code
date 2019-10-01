@@ -1,0 +1,2 @@
+a1	setSome	(a1 DOT setSome (b1))	func1
+a1	getSome	(c1 = a1 DOT getSome ())	func1

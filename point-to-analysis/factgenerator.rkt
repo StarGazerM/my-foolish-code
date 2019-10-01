@@ -104,9 +104,9 @@
 
 ;; grammar of predicate IR
 (define (fact? e)
-  ;;(displayln e)
+  ;; (displayln e)
   (match e
-    [`(Alloc ,(? symbol?) ,(? number?) ,(? symbol?)) #t]
+    [`(Alloc ,(? symbol?) ,(? symbol?) ,(? symbol?)) #t]
     [`(Assign ,(? symbol?) ,(? symbol?)) #t]
     [`(Load ,(? symbol?) ,(? symbol?) ,(? symbol?)) #t]
     [`(Store ,(? symbol?) ,(? symbol?) ,(? symbol?)) #t]
@@ -116,7 +116,7 @@
     [`(RealArg ,(? list?) ,(? number?) ,(? symbol?)) #t]
     [`(FormalRet ,(? symbol?) ,(? symbol?)) #t]
     [`(RealRet ,(? list?) ,(? symbol?)) #t]
-    [`(ClassOf ,(? number?) ,(? symbol?)) #t]
+    [`(ClassOf ,(? symbol?) ,(? symbol?)) #t]
     [`(MethodOf ,(? symbol?) ,(? symbol?)) #t]
     [`(MemberOf ,(? symbol?) ,(? symbol?)) #t]
     [else #f]
@@ -124,17 +124,17 @@
 
 ;; here I use a generate function to gen some uique number to
 ;; represent the addr of object in heap
-(define counter 0)
-(define (gen-num)
-  (set! counter (+ counter 1))
-  counter)
+;; (define counter 0)
+;; (define (gen-num)
+;;   (set! counter (+ counter 1))
+;;   counter)
 
 ;(define (factgen-func-arg i args ))
 
 (define (factgen-instr e inMeth)
   (match e
     [`(var ,(? symbol? vname) = new ,(? symbol? cname)())
-     (define obj (gen-num))
+     (define obj (gensym))
      (list
       `(Alloc ,vname ,obj ,inMeth)
       `(ClassOf ,obj ,cname))]
@@ -216,14 +216,21 @@
       (map (λ (m) (factgen-member m className)) mbs)
       (map (λ (f) (factgen-fun f className)) funs))]))
 
+;; since every programe must have Main, directly append some
+;; facts about main
+(define factgen-main
+  '((Alloc $Main oMain $init)
+    (ClassOf oMain Main)))
+
 ;; generate strutural facts
 (define (factgen e)
-  (match e
-    [`(,(? class? clazzs)...)
-     ;; structural way
-     ;; (map factgen-class clazzs)]))
-     ;; flatten way
-     (append* (map factgen-class clazzs))]))
+  (cons factgen-main
+        (match e
+          [`(,(? class? clazzs)...)
+           ;; structural way
+           ;; (map factgen-class clazzs)]))
+           ;; flatten way
+           (append* (map factgen-class clazzs))])))
 
 ;; flatten the fact tree
 ;; define predicate expr
@@ -232,6 +239,71 @@
       (list f)
       (append* (map (λ (x) (fact-flatten x)) f))))
 
+;; output to souffle facts
+(define alloc-file
+  (open-output-file "Alloc.facts" #:exists 'truncate))
+(define assign-file
+  (open-output-file "Assign.facts" #:exists 'truncate))
+(define load-file
+  (open-output-file "Load.facts" #:exists 'truncate))
+(define store-file
+  (open-output-file "Store.facts" #:exists 'truncate))
+(define vcall-file
+  (open-output-file "Vcall.facts" #:exists 'truncate))
+(define thiscall-file
+  (open-output-file "ThisCall.facts" #:exists 'truncate))
+(define formalarg-file
+  (open-output-file "FormalArg.facts" #:exists 'truncate))
+(define realarg-file
+  (open-output-file "RealArg.facts" #:exists 'truncate))
+(define realret-file
+  (open-output-file "RealRet.facts" #:exists 'truncate))
+(define formalret-file
+  (open-output-file "FormalRet.facts" #:exists 'truncate))
+(define classof-file
+  (open-output-file "ClassOf.facts" #:exists 'truncate))
+(define methodof-file
+  (open-output-file "MethodOf.facts" #:exists 'truncate))
+(define memberof-file
+  (open-output-file "MemberOf.facts" #:exists 'truncate))
+
+;; transform a single line of facts into souffle input
+(define (fact-to-file e)
+  (match e
+    [`(Alloc ,(? symbol? v) ,(? symbol? o) ,(? symbol? in))
+     (displayln (format "~s\t~s\t~s" v o in) alloc-file)]
+    [`(Assign ,(? symbol? to) ,(? symbol? from))
+     (displayln (format "~s\t~s" to from) assign-file)]
+    [`(Load ,(? symbol? to) ,(? symbol? target) ,(? symbol? f))
+     (displayln (format "~s\t~s\t~s" to target f) assign-file)]
+    [`(Store ,(? symbol? target) ,(? symbol? f) ,(? symbol? from))
+     (displayln (format "~s\t~s\t~s" target f from) store-file)]
+    [`(Vcall ,(? symbol? target) ,(? symbol? fun) ,(? list? ins) ,(? symbol? inM))
+     (displayln (format "~s\t~s\t~s\t~s" target fun ins inM) vcall-file)]
+    [`(ThisCall ,(? symbol? fun) ,(? list? ins) ,(? symbol? inM))
+     (displayln (format "~s\t~s\t~s" fun ins inM) thiscall-file)]
+    [`(FormalArg ,(? symbol? m) ,(? number? pos) ,(? symbol? arg))
+     (displayln (format "~s\t~s\t~s" m pos arg) formalarg-file)]
+    [`(RealArg ,(? list? i) ,(? number? pos) ,(? symbol? ret))
+     (displayln (format "~s\t~s\t~s" i pos ret) realarg-file)]
+    [`(FormalRet ,(? symbol? m) ,(? symbol? ret))
+     (displayln (format "~s\t~s" m ret) formalret-file)]
+    [`(RealRet ,(? list? i) ,(? symbol? ret))
+     (displayln (format "~s\t~s" i ret) realret-file)]
+    [`(ClassOf ,(? symbol? o) ,(? symbol? c))
+     (displayln (format "~s\t~s" o c) classof-file)]
+    [`(MethodOf ,(? symbol? c) ,(? symbol? m))
+     (displayln (format "~s\t~s" c m) methodof-file)]
+    [`(MemberOf ,(? symbol? v) ,(? symbol? c))
+     (displayln (format "~s\t~s" v c) memberof-file)]
+    [else (error (format "invalid fact: ~s" e))]
+    ))
+
+;; transform a whole structural predicates into souffle facts
+(define (facts-to-file fs)
+  (if (fact? fs)
+      (fact-to-file fs)
+      (map facts-to-file fs)))
 
 ;; test
 
@@ -298,5 +370,23 @@
 ;; (factgen-instr `(var a1 = new A1()) 'func1)
 ;; (factgen-instr `(c1 = a1 DOT getSome ()) 'func1)
 ;; (factgen-fun func1 'A1)
-(factgen prog-test)
+;;(pretty-print (factgen prog-test))
 (fact-flatten (factgen prog-test))
+
+(facts-to-file (factgen prog-test))
+
+;; close output port
+(close-output-port alloc-file)
+(close-output-port assign-file)
+(close-output-port load-file)
+(close-output-port store-file)
+(close-output-port vcall-file)
+(close-output-port thiscall-file)
+(close-output-port formalarg-file)
+(close-output-port realarg-file)
+(close-output-port formalret-file)
+(close-output-port realret-file)
+(close-output-port classof-file)
+(close-output-port methodof-file)
+(close-output-port memberof-file)
+
