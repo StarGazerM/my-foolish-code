@@ -58,11 +58,10 @@
 ;; small step state transition
 ;; greek aplhabet varsigma is usually used as "state"
 (define (step-cc ς)
-  ;; (displayln st)
   (match ς
     ;; if both value, do beta reduce
     [`(((λ (,x) ,em) ,(? aexp? v)) ,k)
-     (displayln (subst em x v))
+     ;; (displayln (subst em x v))
      `(,(subst em x v) ,k)]
     ;; if redex is evaled, put it into the hole
     [`(,(? aexp? v) ((HOLE ,en) . ,e))
@@ -82,7 +81,7 @@
 
 (define (multistep-cc ς)
   (let ([next (step-cc ς)])
-    (displayln (format "step to --> ~s" next))
+    (displayln (format " --> ~s" next))
     (if next
         (multistep-cc next)
         ς)))
@@ -97,21 +96,18 @@
 
 ;; test cc machine
 (eval-cc
- (inject-cc (churchify '((λ (x) (if #t 1 0)) 1))))
+ (inject-cc (churchify '((λ (x) (if #f 1 0)) 1))))
 
 ;; test output:
 
-;; the init state is (((λ (x) (((λ (t) (λ (f) t)) (λ (_) (λ (f) (λ (x) (f x))))) (λ (_) (λ (f) (λ (x) x))))) (λ (f) (λ (x) (f x)))) HOLE)
-;; (((λ (t) (λ (f) t)) (λ (_) (λ (f) (λ (x) (f x))))) (λ (_) (λ (f) (λ (x) x))))
-;; step to --> ((((λ (t) (λ (f) t)) (λ (_) (λ (f) (λ (x) (f x))))) (λ (_) (λ (f) (λ (x) x)))) HOLE)
-;; step to --> (((λ (t) (λ (f) t)) (λ (_) (λ (f) (λ (x) (f x))))) ((HOLE (λ (_) (λ (f) (λ (x) x)))) . HOLE))
-;; (λ (f) (λ (_) (λ (f) (λ (x) (f x)))))
-;; step to --> ((λ (f) (λ (_) (λ (f) (λ (x) (f x))))) ((HOLE (λ (_) (λ (f) (λ (x) x)))) . HOLE))
-;; step to --> (((λ (f) (λ (_) (λ (f) (λ (x) (f x))))) (λ (_) (λ (f) (λ (x) x)))) HOLE)
-;; (λ (_) (λ (f) (λ (x) (f x))))
-;; step to --> ((λ (_) (λ (f) (λ (x) (f x)))) HOLE)
+;; the init state is (((λ (x) (((λ (t) (λ (f) f)) (λ (_) (λ (f) (λ (x) (f x))))) (λ (_) (λ (f) (λ (x) x))))) (λ (f) (λ (x) (f x)))) HOLE)
+;; --> ((((λ (t) (λ (f) f)) (λ (_) (λ (f) (λ (x) (f x))))) (λ (_) (λ (f) (λ (x) x)))) HOLE)
+;; --> (((λ (t) (λ (f) f)) (λ (_) (λ (f) (λ (x) (f x))))) ((HOLE (λ (_) (λ (f) (λ (x) x)))) . HOLE))
+;; --> ((λ (f) f) ((HOLE (λ (_) (λ (f) (λ (x) x)))) . HOLE))
+;; --> (((λ (f) f) (λ (_) (λ (f) (λ (x) x)))) HOLE)
+;; --> ((λ (_) (λ (f) (λ (x) x))) HOLE)
 ;; reach normal form
-;; step to --> #f
-;; '(λ (_) (λ (f) (λ (x) (f x))))
+;; --> #f
+;; '(λ (_) (λ (f) (λ (x) x)))
 
 
