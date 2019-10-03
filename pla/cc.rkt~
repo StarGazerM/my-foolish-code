@@ -72,7 +72,6 @@
     [`(((λ (,x) ,em) ,(? aexp? v)) ,k)
      `(,(subst em x v) ,k)]
     ;; if redex is evaled, take out the application which contain hole
-    ;; v in left
     ;; hole with nothing left
     [`(,(? aexp? v) (HOLE ,en))
      `((,v ,en) HOLE)]
@@ -82,7 +81,6 @@
     ;; hole in right
     [`(,(? aexp? v) (,k (HOLE ,en)))
      `((,v ,en) ,k)]
-    ;; v in right
     ;; hole with nothing left
     [`(,(? aexp? v) (,eu HOLE))
      `((,eu ,v) HOLE)]
@@ -93,7 +91,7 @@
     [`(,(? aexp? v) (,k (,eu HOLE)))
      `((,eu ,v) ,k)]
     ;; if left is value, then set right as redex
-    [`((,(? aexp? v1) ,(? cexp? em)) ,k)
+    [`(((,(? aexp? v1)) ,(? cexp? em)) ,k)
      `(,em ,(fill k `(,v1 HOLE)))]
     ;; if m and n both not evaled, create a redex
     [`((,(? cexp? em) ,(? cexp? en)) ,k)

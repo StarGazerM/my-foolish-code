@@ -149,3 +149,8 @@
     [`(,f ,arg . ,res) ;=>
      (churchify `(,(churchify `(,f ,arg)) ,@res))]
     ))
+
+
+;; tests
+
+
