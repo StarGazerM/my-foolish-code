@@ -99,8 +99,7 @@
      `(,em ,(fill k `(HOLE ,en)))]
     [else
      (displayln "reach end")
-     #f]
-    ))
+     #f]))
 
 (define (multistep-cc ς)
   (let ([next (step-cc ς)])
