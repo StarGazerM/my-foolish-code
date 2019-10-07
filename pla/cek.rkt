@@ -127,7 +127,7 @@
     [`(,(? aexp?) ,(? hash?)) #t]
     [else #f]))
 
-;; now we should change our continuation to support envrionment
+;; continuation with environment
 (define (ekont? k)
   (match k
     ;; empty hole
@@ -137,20 +137,32 @@
     [else #f]))
 
 ;; step of cek machine
+;; here for simplification I actually use <(c e) k> as my state
 (define (step-cek ς)
   (match ς
     ;; compare to ck machine we add env to a control string
-    [`(((,(? cexp? em) ,(? cexp? en)) ,(? hash? ρ)) ,(? ekont? k))
+    [`(((,(? cexp? em) ,(? cexp? en))
+        ,(? hash? ρ))
+       ,(? ekont? k))
+     ; =>
      `((,em ,ρ) (arg (,en ,ρ) ,k))]
     ;; eval a var, look it up in env
-    [`((,(? symbol? x) ,(? hash? ρ)) ,(? ekont? k))
+    [`((,(? symbol? x)
+        ,(? hash? ρ))
+       ,(? ekont? k))
+     ; =>
      `(,(hash-ref ρ x) ,k)]
     ;; if fun is evaled, switch redex to argument
-    [`((,(? aexp? v) ,(? hash? ρ)) (arg (,en ,ρ-prime) ,(? ekont? k)))
+    [`((,(? aexp? v)
+        ,(? hash? ρ))
+       (arg (,en ,ρ-prime) ,(? ekont? k)))
+     ; =>
      `((,en ,ρ-prime) (fun (,v ,ρ) ,k))]
     ;; we change subst to modify env
-    [`((,(? aexp? v) ,(? hash? ρ))
+    [`((,(? aexp? v)
+        ,(? hash? ρ))
        (fun ((λ (,x) ,em) ,(? hash? ρ-prime)) ,(? ekont? k)))
+     ; =>
      `((,em ,(hash-set ρ-prime x `(,v ,ρ))) ,k)]
     [else
      (displayln "reach end")
@@ -196,3 +208,75 @@
 ;; reach end
 ;; cek--> #f
 ;; '(λ (m) m)
+
+;; in cek machine, the environment of each continuation is directly stored in itself
+;; or in another word , environment and closure are mutually recursive.
+;; we can seperate them using an external "storage", now our state become <C,E,S,K>
+;; so this version of abstract machine is calle CESK machine
+
+;; storage is a partial map from address to value. When we have address we only
+;; need to store address rather than  real value in environment.(this also means
+;; value will not appear inside continuation)
+
+;; let's define CESK state transit step
+;; NOTE: use σ for storage. and the actully state is <(C E) S K>
+(define (step-cesk ς)
+  (match ς
+    [`(((,(? cexp? e0) ,(? cexp? e1))
+        ,(? hash? ρ))
+       ,(? hash? σ)
+       ,(? ekont? k))
+     ; =>
+     `((,e0 ,ρ)
+       ,σ
+       (arg (,e1 ,ρ) ,k))]
+    [`((,(? symbol? x) ,(? hash? ρ))
+       ,(? hash? σ)
+       ,(? ekont? k))
+     ; =>
+     `(,(hash-ref σ (hash-ref ρ x)) ,σ ,k)]
+    [`((,(? aexp? v) ,(? hash? ρ))
+       ,(? hash? σ)
+       (arg (,(? cexp? e) ,(? hash? ρ-prime)) ,(? ekont? k)))
+     ; =>
+     `((,e ,ρ-prime)
+       ,σ
+       (fun (,v ,ρ) ,k))]
+    [`((,(? aexp? v) ,(? hash? ρ))
+       ,(? hash? σ)
+       (fun ((λ (,x) ,e) ,(? hash? ρ-prime)) ,(? ekont? k)))
+     ; =>
+     ;; allocate a address "a" for the calculated value, and then
+     ;; put the value to env
+     (let ([a (gensym)])
+       `((,e ,(hash-set ρ-prime x a))
+         ,(hash-set σ a `(,v ,ρ))
+         ,k))]
+    [else
+     (displayln "reach end")
+     #f]
+    ))
+
+;; inject
+(define (inject-cesk e)
+  `((,e ,(hash)) ,(hash) mt))
+
+(define (multistep-cesk ς)
+  (let ([next (step-cesk ς)])
+    (displayln (format "cesk--> ~s" next))
+    (if next
+        (multistep-cesk next)
+        ς)))
+
+;; specify valid value
+(define (eval-cesk ς)
+  (displayln (format "the init state is ~s" ς))
+  (let ([norm (multistep-cesk ς)])
+    (match norm
+      [`((,(? aexp? b) ,(? hash?)) ,(? hash?) mt) b]
+      [else (error (format "stuck at ill form ~s" norm))])))
+
+;; test cesk machine
+(eval-cesk
+ (inject-cesk '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
+

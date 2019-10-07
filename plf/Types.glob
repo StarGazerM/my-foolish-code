@@ -1,4 +1,4 @@
-DIGEST 1b05cc3dc1a7e0c881a15c0e8c9985bd
+DIGEST bc5aac33e59eec34b7ba307d273715d1
 FPLF.Types
 R70:80 Coq.Arith.Arith <> <> lib
 R107:110 PLF.Maps <> <> lib
@@ -365,7 +365,50 @@ R3697:3699 PLF.Types <> :::'|-'_x_'∈'_x not
 R3701:3705 PLF.Types <> :::'|-'_x_'∈'_x not
 R3700:3700 PLF.Types <> t var
 R3706:3706 PLF.Types <> T var
-R4003:4016 PLF.Types <> bool_canonical thm
-R4003:4016 PLF.Types <> bool_canonical thm
-R4179:4182 PLF.Types <> test constr
-R4179:4182 PLF.Types <> test constr
+R3988:4001 PLF.Types <> bool_canonical thm
+R3988:4001 PLF.Types <> bool_canonical thm
+R4107:4119 PLF.Types <> nat_canonical thm
+R4107:4119 PLF.Types <> nat_canonical thm
+R4184:4196 PLF.Types <> nat_canonical thm
+R4184:4196 PLF.Types <> nat_canonical thm
+R4287:4299 PLF.Types <> nat_canonical thm
+R4287:4299 PLF.Types <> nat_canonical thm
+prf 4374:4385 <> preservation
+R4416:4421 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4430:4435 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4436:4438 PLF.Types <> :::'|-'_x_'∈'_x not
+R4441:4445 PLF.Types <> :::'|-'_x_'∈'_x not
+R4439:4440 PLF.Types <> t' var
+R4446:4446 PLF.Types <> T var
+R4423:4427 PLF.Types <> :::x_'-->'_x not
+R4422:4422 PLF.Types <> t var
+R4428:4429 PLF.Types <> t' var
+R4406:4408 PLF.Types <> :::'|-'_x_'∈'_x not
+R4410:4414 PLF.Types <> :::'|-'_x_'∈'_x not
+R4409:4409 PLF.Types <> t var
+R4415:4415 PLF.Types <> T var
+def 4692:4700 <> multistep
+R4706:4710 PLF.Smallstep <> multi ind
+R4712:4715 PLF.Types <> step ind
+R4747:4755 PLF.Types <> multistep def
+not 4728:4728 <> :::x_'-->*'_x
+R4786:4790 PLF.Smallstep <> multi ind
+R4799:4803 PLF.Types <> stuck def
+prf 4817:4825 <> soundness
+R4856:4861 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4871:4876 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4877:4879 Coq.Init.Logic <> not def
+R4882:4886 PLF.Types <> stuck def
+R4888:4889 PLF.Types <> t' var
+R4863:4868 PLF.Types <> :::x_'-->*'_x not
+R4862:4862 PLF.Types <> t var
+R4869:4870 PLF.Types <> t' var
+R4846:4848 PLF.Types <> :::'|-'_x_'∈'_x not
+R4850:4854 PLF.Types <> :::'|-'_x_'∈'_x not
+R4849:4849 PLF.Types <> t var
+R4855:4855 PLF.Types <> T var
+R4963:4970 PLF.Types <> progress thm
+R4963:4970 PLF.Types <> progress thm
+R5007:5018 PLF.Types <> preservation thm
+R5007:5018 PLF.Types <> preservation thm
+R5042:5046 PLF.Types <> stuck def
