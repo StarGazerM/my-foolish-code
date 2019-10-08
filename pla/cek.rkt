@@ -280,3 +280,172 @@
 (eval-cesk
  (inject-cesk '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
 
+
+;; In CESK machine, we can still find the continuation is a recursive strcuture
+;; we can use the similar method to make continuation a "linked list" like thing
+;; which means in this machine, continuation will hold the point rather than
+;; directly hold is successor. and all continuation data will be stored in σ
+
+(define (step-cesk* ς)
+  (match ς
+    ;; app
+    ;; a and b are pointers
+    [`(((,(? cexp? e0) ,(? cexp? e1))
+        ,(? hash? ρ))
+       ,(? hash? σ)
+       ,a)
+     ; =>
+     (let ([b (gensym)])
+       `((,e0 ,ρ)
+         ,(hash-set σ b `(arg (,e1 ,ρ) ,a))
+         ,b))]
+    ;; var
+    [`((,(? symbol? x) ,(? hash? ρ))
+       ,(? hash? σ)
+       ,a)
+     ; =>
+     `(,(hash-ref σ (hash-ref ρ x)) ,σ ,a)]
+    ;; eval one side
+    [`((,(? aexp? v) ,(? hash? ρ))
+       ,(? hash? σ)
+       ,a)
+     ; =>
+     (let ([b (gensym)])
+       (match (hash-ref σ a)
+         ;; arg
+         [`(arg (,(? cexp? e) ,ρ-prime) ,c)
+          ; =>
+          `((,e ,ρ-prime)
+            ,(hash-set σ b `(fun (,v ,ρ) ,c))
+            ,b)]
+         ;; fun
+         [`(fun ((λ (,x) ,e) ,ρ-prime) ,c)
+          ; =>
+          `((,e ,(hash-set ρ-prime x b))
+            ,(hash-set σ b `(,v ,ρ))
+            ,c)]
+         ['mt
+          (displayln "reach end")
+          #f]))]
+    [else
+     (displayln "reach end")
+     #f]
+    ))
+
+;; inject
+(define (inject-cesk* e)
+  (let ([a (gensym)])
+    `((,e ,(hash)) ,(hash a 'mt) ,a)))
+
+(define (multistep-cesk* ς)
+  (let ([next (step-cesk* ς)])
+    (displayln (format "cesk*--> ~s" next))
+    (if next
+        (multistep-cesk* next)
+        ς)))
+
+;; specify valid value
+(define (eval-cesk* ς)
+  (displayln (format "the init state is ~s" ς))
+  (let ([norm (multistep-cesk* ς)])
+    (match norm
+      [`((,(? aexp? b) ,(? hash? ρ)) ,(? hash? σ) ,a)
+       (if (equal? (hash-ref σ a) 'mt)
+           b
+           (error (format "stuck at ill form ~s" norm)))]
+      [else (error (format "stuck at ill form ~s" norm))])))
+
+;; test cesk machine
+(eval-cesk*
+ (inject-cesk* '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
+
+;; for abstract reason, we need to add abstract value to abstract
+;; abstract machine, in order to make our analysis more presise,
+;; (for dynamic state allocation) one strategy can be used is represent
+;; the data by the state of the computation at allocation time.
+;; That is , allocation strategy can be based on a representation
+;; of the machine history. This is called timestamp.
+;; This cause our state machine become <C E S K T>
+
+;; use a simulated timer to gen tick, it will be easy to check in
+;; result
+(define next-tick add1)
+
+(define (step-time-stamped-cesk* ς)
+  (match ς
+    ;; app
+    ;; a and b are pointers
+    [`(((,(? cexp? e0) ,(? cexp? e1))
+        ,(? hash? ρ))
+       ,(? hash? σ)
+       ,a
+       ,t)
+     ; =>
+     (let ([b (gensym)]
+           [u (next-tick t)])
+       `((,e0 ,ρ)
+         ,(hash-set σ b `(arg (,e1 ,ρ) ,a))
+         ,b
+         ,u))]
+    ;; var
+    [`((,(? symbol? x) ,(? hash? ρ))
+       ,(? hash? σ)
+       ,a
+       ,t)
+     ; =>
+     `(,(hash-ref σ (hash-ref ρ x)) ,σ ,a ,(next-tick t))]
+    ;; eval one side
+    [`((,(? aexp? v) ,(? hash? ρ))
+       ,(? hash? σ)
+       ,a
+       ,t)
+     ; =>
+     (let ([b (gensym)]
+           [u (next-tick t)])
+       (match (hash-ref σ a)
+         ;; arg
+         [`(arg (,(? cexp? e) ,ρ-prime) ,c)
+          ; =>
+          `((,e ,ρ-prime)
+            ,(hash-set σ b `(fun (,v ,ρ) ,c))
+            ,b
+            ,u)]
+         ;; fun
+         [`(fun ((λ (,x) ,e) ,ρ-prime) ,c)
+          ; =>
+          `((,e ,(hash-set ρ-prime x b))
+            ,(hash-set σ b `(,v ,ρ))
+            ,c
+            ,u)]
+         [else #f]))]
+    [else
+     (displayln "reach end")
+     #f]
+    ))
+
+;; inject
+(define (inject-time-stamped-cesk* e)
+  (let ([a (gensym)])
+    `((,e ,(hash)) ,(hash a 'mt) ,a ,0)))
+
+(define (multistep-time-stamped-cesk* ς)
+  (let ([next (step-time-stamped-cesk* ς)])
+    (displayln (format "time-stamped-cesk*--> ~s" next))
+    (if next
+        (multistep-time-stamped-cesk* next)
+        ς)))
+
+;; specify valid value
+(define (eval-time-stamped-cesk* ς)
+  (displayln (format "the init state is ~s" ς))
+  (let ([norm (multistep-time-stamped-cesk* ς)])
+    (match norm
+      [`((,(? aexp? b) ,(? hash? ρ)) ,(? hash? σ) ,a ,t)
+       (if (equal? (hash-ref σ a) 'mt)
+           b
+           (error (format "stuck at ill form ~s" norm)))]
+      [else (error (format "stuck at ill form ~s" norm))])))
+
+;; test
+(eval-time-stamped-cesk*
+ (inject-time-stamped-cesk* '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
