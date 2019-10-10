@@ -286,6 +286,8 @@
 ;; which means in this machine, continuation will hold the point rather than
 ;; directly hold is successor. and all continuation data will be stored in σ
 
+(define alloc gensym)
+
 (define (step-cesk* ς)
   (match ς
     ;; app
@@ -295,7 +297,7 @@
        ,(? hash? σ)
        ,a)
      ; =>
-     (let ([b (gensym)])
+     (let ([b (alloc)])
        `((,e0 ,ρ)
          ,(hash-set σ b `(arg (,e1 ,ρ) ,a))
          ,b))]
@@ -310,7 +312,7 @@
        ,(? hash? σ)
        ,a)
      ; =>
-     (let ([b (gensym)])
+     (let ([b (alloc)])
        (match (hash-ref σ a)
          ;; arg
          [`(arg (,(? cexp? e) ,ρ-prime) ,c)
@@ -334,7 +336,7 @@
 
 ;; inject
 (define (inject-cesk* e)
-  (let ([a (gensym)])
+  (let ([a (alloc)])
     `((,e ,(hash)) ,(hash a 'mt) ,a)))
 
 (define (multistep-cesk* ς)
@@ -369,7 +371,14 @@
 
 ;; use a simulated timer to gen tick, it will be easy to check in
 ;; result
-(define next-tick add1)
+
+;; tick<_,_,_,_,t> = t +1
+(define tick add1)
+;; alloc<_,_,_,_,t> = t
+(define (alloc* ς)
+  (match ς
+    [`((,e ,ρ) ,σ ,b ,t) t]
+    [else (error "state is in ill form")]))
 
 (define (step-time-stamped-cesk* ς)
   (match ς
@@ -381,27 +390,27 @@
        ,a
        ,t)
      ; =>
-     (let ([b (gensym)]
-           [u (next-tick t)])
+     (let ([b (alloc* ς)]
+           [u (tick t)])
        `((,e0 ,ρ)
          ,(hash-set σ b `(arg (,e1 ,ρ) ,a))
          ,b
          ,u))]
     ;; var
     [`((,(? symbol? x) ,(? hash? ρ))
-       ,(? hash? σ)
+      ,(? hash? σ)
        ,a
        ,t)
      ; =>
-     `(,(hash-ref σ (hash-ref ρ x)) ,σ ,a ,(next-tick t))]
+     `(,(hash-ref σ (hash-ref ρ x)) ,σ ,a ,(tick t))]
     ;; eval one side
     [`((,(? aexp? v) ,(? hash? ρ))
        ,(? hash? σ)
        ,a
        ,t)
      ; =>
-     (let ([b (gensym)]
-           [u (next-tick t)])
+     (let ([b (alloc* ς)]
+           [u (tick t)])
        (match (hash-ref σ a)
          ;; arg
          [`(arg (,(? cexp? e) ,ρ-prime) ,c)
@@ -425,8 +434,7 @@
 
 ;; inject
 (define (inject-time-stamped-cesk* e)
-  (let ([a (gensym)])
-    `((,e ,(hash)) ,(hash a 'mt) ,a ,0)))
+  `((,e ,(hash)) ,(hash 0 'mt) 0 1))
 
 (define (multistep-time-stamped-cesk* ς)
   (let ([next (step-time-stamped-cesk* ς)])
@@ -448,4 +456,4 @@
 
 ;; test
 (eval-time-stamped-cesk*
- (inject-time-stamped-cesk* '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
+ (inject-time-stamped-cesk* '((((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m))) (λ (g) g))))
