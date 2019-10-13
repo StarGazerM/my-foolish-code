@@ -1,0 +1,15 @@
+digraph G {
+     "(λ (g) (g g))_fn" -> "(g g)"
+    "g_fn" -> "(λ (g) (g g))_fn"
+    "(λ (g) (g g))_ar" -> "g_fn"
+    "g_ar" -> "(λ (g) (g g))_ar"
+    "(g g)" -> "g_ar"
+    "(λ (g) (g g))_fn" -> "(g g)"
+    "f_fn" -> "(λ (g) (g g))_fn"
+    "(λ (g) (g g))_ar" -> "f_fn"
+    "f_ar" -> "(λ (g) (g g))_ar"
+    "(f f)" -> "f_ar"
+    "(λ (g) (g g))_fn" -> "(f f)"
+    "(λ (f) (f f))_ar" -> "(λ (g) (g g))_fn"
+    "((λ (f) (f f)) (λ (g) (g g)))" -> "(λ (f) (f f))_ar"
+ }
