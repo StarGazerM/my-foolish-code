@@ -64,11 +64,12 @@
 ;; in do block each 'line' will cause a bind call
 ;; f :: a -> b
 (define (>>= v)
-  (call/comp
+  (call/cc
    (λ (ccc)
      ;; abort/cc is used to replace function call with
      ;; wrapper continuation
-     (abort/cc do-tag (λ () `(bind ,ccc ,v))))
+     `(bind ,ccc ,v)
+     #;(abort/cc do-tag (λ () `(bind ,ccc ,v))))
    do-tag))
 
 ;; define maybe

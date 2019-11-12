@@ -1,5 +1,7 @@
 Basics.vo Basics.glob Basics.v.beautified: Basics.v
 Basics.vio: Basics.v
+Imp.vo Imp.glob Imp.v.beautified: Imp.v Maps.vo
+Imp.vio: Imp.v Maps.vio
 IndPrinciples.vo IndPrinciples.glob IndPrinciples.v.beautified: IndPrinciples.v ProofObjects.vo
 IndPrinciples.vio: IndPrinciples.v ProofObjects.vio
 IndProp.vo IndProp.glob IndProp.v.beautified: IndProp.v Logic.vo
@@ -16,5 +18,7 @@ Poly.vo Poly.glob Poly.v.beautified: Poly.v Lists.vo
 Poly.vio: Poly.v Lists.vio
 ProofObjects.vo ProofObjects.glob ProofObjects.v.beautified: ProofObjects.v IndProp.vo
 ProofObjects.vio: ProofObjects.v IndProp.vio
+Rel.vo Rel.glob Rel.v.beautified: Rel.v IndProp.vo
+Rel.vio: Rel.v IndProp.vio
 Tactics.vo Tactics.glob Tactics.v.beautified: Tactics.v Poly.vo
 Tactics.vio: Tactics.v Poly.vio

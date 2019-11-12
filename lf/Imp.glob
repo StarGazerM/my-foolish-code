@@ -1,0 +1,1328 @@
+DIGEST 80f902404cba99e257d258f86d868807
+FLF.Imp
+R70:78 Coq.Bool.Bool <> <> lib
+R105:112 Coq.Init.Nat <> <> lib
+R139:149 Coq.Arith.Arith <> <> lib
+R176:186 Coq.Arith.EqNat <> <> lib
+R213:223 Coq.omega.Omega <> <> lib
+R250:259 Coq.Lists.List <> <> lib
+R286:299 Coq.Strings.String <> <> lib
+R347:350 LF.Maps <> <> lib
+mod 361:364 <> AExp
+ind 380:383 AExp aexp
+constr 398:401 AExp ANum
+constr 416:420 AExp APlus
+constr 440:445 AExp AMinus
+constr 465:469 AExp AMult
+R407:409 Coq.Init.Datatypes <> nat ind
+R411:411 LF.Imp <> aexp ind
+R430:433 LF.Imp <> aexp ind
+R435:435 LF.Imp <> aexp ind
+R455:458 LF.Imp <> aexp ind
+R460:460 LF.Imp <> aexp ind
+R478:481 LF.Imp <> aexp ind
+R483:483 LF.Imp <> aexp ind
+ind 498:501 AExp bexp
+constr 516:520 AExp BTrue
+constr 526:531 AExp BFalse
+constr 537:539 AExp BEq
+constr 559:561 AExp BLe
+constr 581:584 AExp BNot
+constr 600:603 AExp BAnd
+R521:521 LF.Imp <> bexp ind
+R532:532 LF.Imp <> bexp ind
+R549:552 LF.Imp AExp aexp ind
+R554:554 LF.Imp <> bexp ind
+R571:574 LF.Imp AExp aexp ind
+R576:576 LF.Imp <> bexp ind
+R590:593 LF.Imp <> bexp ind
+R595:595 LF.Imp <> bexp ind
+R613:616 LF.Imp <> bexp ind
+R618:618 LF.Imp <> bexp ind
+def 632:636 AExp aeval
+R643:646 LF.Imp AExp aexp ind
+R651:653 Coq.Init.Datatypes <> nat ind
+R666:666 LF.Imp <> a var
+R677:680 LF.Imp AExp ANum constr
+R693:697 LF.Imp AExp APlus constr
+R708:708 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R717:721 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R730:730 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R709:713 LF.Imp <> aeval def
+R722:726 LF.Imp <> aeval def
+R736:741 LF.Imp AExp AMinus constr
+R752:752 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R761:765 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R774:774 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R753:757 LF.Imp <> aeval def
+R766:770 LF.Imp <> aeval def
+R780:784 LF.Imp AExp AMult constr
+R795:795 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R804:808 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R817:817 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R796:800 LF.Imp <> aeval def
+R809:813 LF.Imp <> aeval def
+def 838:842 AExp beval
+R849:852 LF.Imp AExp bexp ind
+R857:860 Coq.Init.Datatypes <> bool ind
+R873:873 LF.Imp <> b var
+R884:888 LF.Imp AExp BTrue constr
+R893:896 Coq.Init.Datatypes <> true constr
+R902:907 LF.Imp AExp BFalse constr
+R912:916 Coq.Init.Datatypes <> false constr
+R922:924 LF.Imp AExp BEq constr
+R935:935 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R944:949 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R958:958 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R936:940 LF.Imp AExp aeval def
+R950:954 LF.Imp AExp aeval def
+R964:966 LF.Imp AExp BLe constr
+R977:977 Coq.Init.Nat <> ::nat_scope:x_'<=?'_x not
+R986:992 Coq.Init.Nat <> ::nat_scope:x_'<=?'_x not
+R1001:1001 Coq.Init.Nat <> ::nat_scope:x_'<=?'_x not
+R978:982 LF.Imp AExp aeval def
+R993:997 LF.Imp AExp aeval def
+R1007:1010 LF.Imp AExp BNot constr
+R1018:1021 Coq.Init.Datatypes <> negb def
+R1024:1028 LF.Imp <> beval def
+R1038:1041 LF.Imp AExp BAnd constr
+R1052:1055 Coq.Init.Datatypes <> andb def
+R1069:1073 LF.Imp <> beval def
+R1058:1062 LF.Imp <> beval def
+def 1098:1111 AExp optimize_0plus
+R1116:1119 LF.Imp AExp aexp ind
+R1123:1126 LF.Imp AExp aexp ind
+R1141:1141 LF.Imp <> a var
+R1154:1157 LF.Imp AExp ANum constr
+R1164:1167 LF.Imp AExp ANum constr
+R1177:1181 LF.Imp AExp APlus constr
+R1184:1187 LF.Imp AExp ANum constr
+R1198:1211 LF.Imp <> optimize_0plus def
+R1222:1226 LF.Imp AExp APlus constr
+R1237:1241 LF.Imp AExp APlus constr
+R1264:1277 LF.Imp <> optimize_0plus def
+R1244:1257 LF.Imp <> optimize_0plus def
+R1289:1294 LF.Imp AExp AMinus constr
+R1305:1310 LF.Imp AExp AMinus constr
+R1333:1346 LF.Imp <> optimize_0plus def
+R1313:1326 LF.Imp <> optimize_0plus def
+R1358:1362 LF.Imp AExp AMult constr
+R1373:1377 LF.Imp AExp AMult constr
+R1400:1413 LF.Imp <> optimize_0plus def
+R1380:1393 LF.Imp <> optimize_0plus def
+def 1439:1457 AExp test_optimize_0plus
+R1597:1603 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1464:1477 LF.Imp AExp optimize_0plus def
+R1480:1484 LF.Imp AExp APlus constr
+R1522:1526 LF.Imp AExp APlus constr
+R1571:1575 LF.Imp AExp APlus constr
+R1587:1590 LF.Imp AExp ANum constr
+R1578:1581 LF.Imp AExp ANum constr
+R1529:1532 LF.Imp AExp ANum constr
+R1487:1490 LF.Imp AExp ANum constr
+R1604:1608 LF.Imp AExp APlus constr
+R1620:1623 LF.Imp AExp ANum constr
+R1611:1614 LF.Imp AExp ANum constr
+prf 1667:1686 AExp optimize_0plus_sound
+R1729:1731 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1705:1709 LF.Imp AExp aeval def
+R1712:1725 LF.Imp AExp optimize_0plus def
+R1727:1727 LF.Imp <> a var
+R1732:1736 LF.Imp AExp aeval def
+R1738:1738 LF.Imp <> a var
+R1792:1805 LF.Imp AExp optimize_0plus def
+prf 2314:2317 AExp foo'
+R2337:2339 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2331:2335 Coq.Init.Nat <> ::nat_scope:x_'<=?'_x not
+R2336:2336 LF.Imp <> n var
+R2340:2343 Coq.Init.Datatypes <> true constr
+prf 2460:2465 AExp silly1
+R2488:2490 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2480:2484 LF.Imp AExp aeval def
+R2486:2487 LF.Imp <> ae var
+R2491:2495 LF.Imp AExp aeval def
+R2497:2498 LF.Imp <> ae var
+prf 2547:2552 AExp silly2
+R2574:2577 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2578:2578 LF.Imp <> P var
+R2573:2573 LF.Imp <> P var
+prf 2702:2722 AExp optimize_0plus_sound'
+R2765:2767 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2741:2745 LF.Imp AExp aeval def
+R2748:2761 LF.Imp AExp optimize_0plus def
+R2763:2763 LF.Imp <> a var
+R2768:2772 LF.Imp AExp aeval def
+R2774:2774 LF.Imp <> a var
+prf 3156:3177 AExp optimize_0plus_sound''
+R3220:3222 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3196:3200 LF.Imp AExp aeval def
+R3203:3216 LF.Imp AExp optimize_0plus def
+R3218:3218 LF.Imp <> a var
+R3223:3227 LF.Imp AExp aeval def
+R3229:3229 LF.Imp <> a var
+prf 3616:3619 AExp In10
+R3623:3624 Coq.Lists.List <> In def
+R3629:3629 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3631:3631 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3633:3633 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3635:3635 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3637:3637 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3639:3639 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3641:3641 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3643:3643 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3645:3645 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3647:3647 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3650:3650 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+prf 3766:3770 AExp In10'
+R3774:3775 Coq.Lists.List <> In def
+R3780:3780 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3782:3782 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3784:3784 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3786:3786 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3788:3788 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3790:3790 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3792:3792 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3794:3794 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3796:3796 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3798:3798 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R3801:3801 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+def 3908:3923 AExp optimize_0plus_b
+R3929:3932 LF.Imp AExp bexp ind
+R3936:3939 LF.Imp AExp bexp ind
+R3954:3954 LF.Imp <> b var
+R3967:3971 LF.Imp AExp BTrue constr
+R3976:3980 LF.Imp AExp BTrue constr
+R3988:3993 LF.Imp AExp BFalse constr
+R3998:4003 LF.Imp AExp BFalse constr
+R4011:4013 LF.Imp AExp BEq constr
+R4024:4026 LF.Imp AExp BEq constr
+R4049:4062 LF.Imp AExp optimize_0plus def
+R4029:4042 LF.Imp AExp optimize_0plus def
+R4074:4076 LF.Imp AExp BLe constr
+R4087:4089 LF.Imp AExp BLe constr
+R4112:4125 LF.Imp AExp optimize_0plus def
+R4092:4105 LF.Imp AExp optimize_0plus def
+R4137:4140 LF.Imp AExp BNot constr
+R4148:4151 LF.Imp AExp BNot constr
+R4154:4169 LF.Imp <> optimize_0plus_b def
+R4181:4184 LF.Imp AExp BAnd constr
+R4195:4198 LF.Imp AExp BAnd constr
+R4223:4238 LF.Imp <> optimize_0plus_b def
+R4201:4216 LF.Imp <> optimize_0plus_b def
+prf 4264:4285 AExp optimize_0plus_b_sound
+R4330:4332 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4304:4308 LF.Imp AExp beval def
+R4311:4326 LF.Imp AExp optimize_0plus_b def
+R4328:4328 LF.Imp <> b var
+R4333:4337 LF.Imp AExp beval def
+R4339:4339 LF.Imp <> b var
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+R4448:4467 LF.Imp AExp optimize_0plus_sound thm
+def 4716:4739 AExp silly_presburger_example
+R4795:4804 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4806:4809 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R4805:4805 LF.Imp <> m var
+R4810:4810 LF.Imp <> p var
+R4778:4781 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R4769:4772 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R4765:4767 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4764:4764 LF.Imp <> m var
+R4768:4768 LF.Imp <> n var
+R4774:4776 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4773:4773 LF.Imp <> n var
+R4777:4777 LF.Imp <> o var
+R4787:4789 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4783:4785 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4782:4782 LF.Imp <> o var
+R4791:4793 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4790:4790 LF.Imp <> p var
+mod 4856:4871 <> AExp.avealR_first_try
+ind 4936:4941 AExp.avealR_first_try aevalR
+constr 4973:4978 AExp.avealR_first_try E_ANum
+constr 5015:5021 AExp.avealR_first_try E_APlus
+constr 5145:5152 AExp.avealR_first_try E_AMinus
+constr 5277:5283 AExp.avealR_first_try E_AMult
+R4948:4951 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4955:4958 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4952:4954 Coq.Init.Datatypes <> nat ind
+R4944:4947 LF.Imp AExp aexp ind
+R4948:4951 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4955:4958 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4952:4954 Coq.Init.Datatypes <> nat ind
+R4944:4947 LF.Imp AExp aexp ind
+R4991:4996 LF.Imp <> aevalR ind
+R5007:5007 LF.Imp <> n var
+R4999:5002 LF.Imp AExp ANum constr
+R5004:5004 LF.Imp <> n var
+R5031:5034 LF.Imp AExp aexp ind
+R5045:5047 Coq.Init.Datatypes <> nat ind
+R5072:5083 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5096:5107 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5108:5113 LF.Imp <> aevalR ind
+R5132:5134 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R5130:5131 LF.Imp <> n1 var
+R5135:5136 LF.Imp <> n2 var
+R5116:5120 LF.Imp AExp APlus constr
+R5125:5126 LF.Imp <> e2 var
+R5122:5123 LF.Imp <> e1 var
+R5084:5089 LF.Imp <> aevalR ind
+R5094:5095 LF.Imp <> n2 var
+R5091:5092 LF.Imp <> e2 var
+R5060:5065 LF.Imp <> aevalR ind
+R5070:5071 LF.Imp <> n1 var
+R5067:5068 LF.Imp <> e1 var
+R5162:5165 LF.Imp AExp aexp ind
+R5176:5178 Coq.Init.Datatypes <> nat ind
+R5203:5214 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5227:5238 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5239:5244 LF.Imp <> aevalR ind
+R5264:5266 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R5262:5263 LF.Imp <> n1 var
+R5267:5268 LF.Imp <> n2 var
+R5247:5252 LF.Imp AExp AMinus constr
+R5257:5258 LF.Imp <> e2 var
+R5254:5255 LF.Imp <> e1 var
+R5215:5220 LF.Imp <> aevalR ind
+R5225:5226 LF.Imp <> n2 var
+R5222:5223 LF.Imp <> e2 var
+R5191:5196 LF.Imp <> aevalR ind
+R5201:5202 LF.Imp <> n1 var
+R5198:5199 LF.Imp <> e1 var
+R5293:5296 LF.Imp AExp aexp ind
+R5307:5309 Coq.Init.Datatypes <> nat ind
+R5334:5345 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5358:5369 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5370:5375 LF.Imp <> aevalR ind
+R5394:5396 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R5392:5393 LF.Imp <> n1 var
+R5397:5398 LF.Imp <> n2 var
+R5378:5382 LF.Imp AExp AMult constr
+R5387:5388 LF.Imp <> e2 var
+R5384:5385 LF.Imp <> e1 var
+R5346:5351 LF.Imp <> aevalR ind
+R5356:5357 LF.Imp <> n2 var
+R5353:5354 LF.Imp <> e2 var
+R5322:5327 LF.Imp <> aevalR ind
+R5332:5333 LF.Imp <> n1 var
+R5329:5330 LF.Imp <> e1 var
+mod 5414:5426 <> AExp.avealR_first_try.TooHardToRead
+ind 5611:5616 AExp.avealR_first_try.TooHardToRead aevalR
+constr 5651:5656 AExp.avealR_first_try.TooHardToRead E_ANum
+constr 5698:5704 AExp.avealR_first_try.TooHardToRead E_APlus
+constr 5856:5863 AExp.avealR_first_try.TooHardToRead E_AMinus
+constr 6018:6024 AExp.avealR_first_try.TooHardToRead E_AMult
+R5624:5627 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5631:5634 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5628:5630 Coq.Init.Datatypes <> nat ind
+R5620:5623 LF.Imp AExp aexp ind
+R5624:5627 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5631:5634 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5628:5630 Coq.Init.Datatypes <> nat ind
+R5620:5623 LF.Imp AExp aexp ind
+R5672:5677 LF.Imp <> aevalR ind
+R5688:5688 LF.Imp <> n var
+R5680:5683 LF.Imp AExp ANum constr
+R5685:5685 LF.Imp <> n var
+R5714:5717 LF.Imp AExp aexp ind
+R5728:5730 Coq.Init.Datatypes <> nat ind
+R5755:5760 LF.Imp <> aevalR ind
+R5765:5766 LF.Imp <> n1 var
+R5762:5763 LF.Imp <> e1 var
+R5791:5796 LF.Imp <> aevalR ind
+R5801:5802 LF.Imp <> n2 var
+R5798:5799 LF.Imp <> e2 var
+R5817:5822 LF.Imp <> aevalR ind
+R5841:5843 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R5839:5840 LF.Imp <> n1 var
+R5844:5845 LF.Imp <> n2 var
+R5825:5829 LF.Imp AExp APlus constr
+R5834:5835 LF.Imp <> e2 var
+R5831:5832 LF.Imp <> e1 var
+R5873:5876 LF.Imp AExp aexp ind
+R5887:5889 Coq.Init.Datatypes <> nat ind
+R5915:5920 LF.Imp <> aevalR ind
+R5925:5926 LF.Imp <> n1 var
+R5922:5923 LF.Imp <> e1 var
+R5952:5957 LF.Imp <> aevalR ind
+R5962:5963 LF.Imp <> n2 var
+R5959:5960 LF.Imp <> e2 var
+R5978:5983 LF.Imp <> aevalR ind
+R6003:6005 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R6001:6002 LF.Imp <> n1 var
+R6006:6007 LF.Imp <> n2 var
+R5986:5991 LF.Imp AExp AMinus constr
+R5996:5997 LF.Imp <> e2 var
+R5993:5994 LF.Imp <> e1 var
+R6034:6037 LF.Imp AExp aexp ind
+R6048:6050 Coq.Init.Datatypes <> nat ind
+R6075:6080 LF.Imp <> aevalR ind
+R6085:6086 LF.Imp <> n1 var
+R6082:6083 LF.Imp <> e1 var
+R6111:6116 LF.Imp <> aevalR ind
+R6121:6122 LF.Imp <> n2 var
+R6118:6119 LF.Imp <> e2 var
+R6137:6142 LF.Imp <> aevalR ind
+R6161:6163 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R6159:6160 LF.Imp <> n1 var
+R6164:6165 LF.Imp <> n2 var
+R6145:6149 LF.Imp AExp AMult constr
+R6154:6155 LF.Imp <> e2 var
+R6151:6152 LF.Imp <> e1 var
+R6179:6191 LF.Imp AExp.avealR_first_try.TooHardToRead <> mod
+R6234:6239 LF.Imp AExp.avealR_first_try aevalR ind
+not 6211:6211 AExp.avealR_first_try ::type_scope:x_'\\'_x
+R6333:6348 LF.Imp AExp.avealR_first_try <> mod
+ind 6434:6439 AExp aevalR
+constr 6472:6477 AExp E_ANum
+constr 6519:6525 AExp E_APlus
+constr 6627:6634 AExp E_AMinus
+constr 6737:6743 AExp E_AMult
+R6447:6450 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6454:6457 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6451:6453 Coq.Init.Datatypes <> nat ind
+R6443:6446 LF.Imp AExp aexp ind
+R6447:6450 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6454:6457 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6451:6453 Coq.Init.Datatypes <> nat ind
+R6443:6446 LF.Imp AExp aexp ind
+R6865:6870 LF.Imp <> aevalR ind
+R6484:6486 Coq.Init.Datatypes <> nat ind
+R6499:6499 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6506:6510 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6500:6503 LF.Imp AExp ANum constr
+R6505:6505 LF.Imp <> n var
+R6511:6511 LF.Imp <> n var
+R6536:6539 LF.Imp AExp aexp ind
+R6551:6553 Coq.Init.Datatypes <> nat ind
+R6566:6566 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6575:6579 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6580:6580 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6589:6593 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6594:6594 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6606:6611 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6619:6619 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6595:6599 LF.Imp AExp APlus constr
+R6604:6605 LF.Imp <> e2 var
+R6601:6602 LF.Imp <> e1 var
+R6614:6616 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R6612:6613 LF.Imp <> n1 var
+R6617:6618 LF.Imp <> n2 var
+R6583:6586 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6581:6582 LF.Imp <> e2 var
+R6587:6588 LF.Imp <> n2 var
+R6569:6572 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6567:6568 LF.Imp <> e1 var
+R6573:6574 LF.Imp <> n1 var
+R6645:6648 LF.Imp AExp aexp ind
+R6660:6662 Coq.Init.Datatypes <> nat ind
+R6675:6675 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6684:6688 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6689:6689 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6698:6702 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6703:6703 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6716:6721 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6729:6729 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6704:6709 LF.Imp AExp AMinus constr
+R6714:6715 LF.Imp <> e2 var
+R6711:6712 LF.Imp <> e1 var
+R6724:6726 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R6722:6723 LF.Imp <> n1 var
+R6727:6728 LF.Imp <> n2 var
+R6692:6695 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6690:6691 LF.Imp <> e2 var
+R6696:6697 LF.Imp <> n2 var
+R6678:6681 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6676:6677 LF.Imp <> e1 var
+R6682:6683 LF.Imp <> n1 var
+R6754:6757 LF.Imp AExp aexp ind
+R6769:6771 Coq.Init.Datatypes <> nat ind
+R6784:6784 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6793:6797 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6798:6798 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6807:6811 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6812:6812 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6824:6829 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6837:6837 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6813:6817 LF.Imp AExp AMult constr
+R6822:6823 LF.Imp <> e2 var
+R6819:6820 LF.Imp <> e1 var
+R6832:6834 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R6830:6831 LF.Imp <> n1 var
+R6835:6836 LF.Imp <> n2 var
+R6801:6804 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6799:6800 LF.Imp <> e2 var
+R6805:6806 LF.Imp <> n2 var
+R6787:6790 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6785:6786 LF.Imp <> e1 var
+R6791:6792 LF.Imp <> n1 var
+R6865:6870 LF.Imp AExp aevalR ind
+not 6850:6850 AExp ::type_scope:x_'\\'_x
+prf 6904:6919 AExp aeval_iff_aevalR
+R6943:6943 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R6950:6955 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R6945:6948 LF.Imp AExp ::type_scope:x_'\\'_x not
+R6944:6944 LF.Imp <> a var
+R6949:6949 LF.Imp <> n var
+R6963:6965 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6956:6960 LF.Imp AExp aeval def
+R6962:6962 LF.Imp <> a var
+R6966:6966 LF.Imp <> n var
+ind 7297:7302 AExp bevalR
+constr 7335:7341 AExp E_BTrue
+constr 7368:7375 AExp E_BFalse
+constr 7404:7408 AExp E_BEq
+constr 7527:7531 AExp E_BLe
+constr 7650:7655 AExp E_BNot
+constr 7739:7744 AExp E_BAnd
+R7309:7312 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7317:7320 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7313:7316 Coq.Init.Datatypes <> bool ind
+R7305:7308 LF.Imp AExp bexp ind
+R7309:7312 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7317:7320 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7313:7316 Coq.Init.Datatypes <> bool ind
+R7305:7308 LF.Imp AExp bexp ind
+R7344:7349 LF.Imp <> bevalR ind
+R7357:7360 Coq.Init.Datatypes <> true constr
+R7351:7355 LF.Imp AExp BTrue constr
+R7378:7383 LF.Imp <> bevalR ind
+R7392:7396 Coq.Init.Datatypes <> false constr
+R7385:7390 LF.Imp AExp BFalse constr
+R7418:7421 LF.Imp AExp aexp ind
+R7432:7434 Coq.Init.Datatypes <> nat ind
+R7446:7446 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7459:7463 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7464:7464 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7478:7490 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7491:7496 LF.Imp <> bevalR ind
+R7513:7516 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R7511:7512 LF.Imp <> e1 var
+R7517:7518 LF.Imp <> e2 var
+R7499:7501 LF.Imp AExp BEq constr
+R7506:7507 LF.Imp <> a2 var
+R7503:7504 LF.Imp <> a1 var
+R7465:7470 LF.Imp AExp aevalR ind
+R7476:7477 LF.Imp <> e2 var
+R7472:7473 LF.Imp <> a2 var
+R7447:7452 LF.Imp AExp aevalR ind
+R7457:7458 LF.Imp <> e1 var
+R7454:7455 LF.Imp <> a1 var
+R7541:7544 LF.Imp AExp aexp ind
+R7555:7557 Coq.Init.Datatypes <> nat ind
+R7569:7569 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7582:7586 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7587:7587 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7600:7612 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7613:7618 LF.Imp <> bevalR ind
+R7635:7639 Coq.Init.Nat <> ::nat_scope:x_'<=?'_x not
+R7633:7634 LF.Imp <> e1 var
+R7640:7641 LF.Imp <> e2 var
+R7621:7623 LF.Imp AExp BLe constr
+R7628:7629 LF.Imp <> a2 var
+R7625:7626 LF.Imp <> a1 var
+R7588:7593 LF.Imp AExp aevalR ind
+R7598:7599 LF.Imp <> e2 var
+R7595:7596 LF.Imp <> a2 var
+R7570:7575 LF.Imp AExp aevalR ind
+R7580:7581 LF.Imp <> e1 var
+R7577:7578 LF.Imp <> a1 var
+R7662:7665 LF.Imp AExp bexp ind
+R7673:7676 Coq.Init.Datatypes <> bool ind
+R7688:7688 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7701:7705 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7706:7711 LF.Imp <> bevalR ind
+R7724:7727 Coq.Init.Datatypes <> negb def
+R7729:7730 LF.Imp <> e1 var
+R7714:7717 LF.Imp AExp BNot constr
+R7719:7720 LF.Imp <> b1 var
+R7689:7694 LF.Imp <> bevalR ind
+R7699:7700 LF.Imp <> e1 var
+R7696:7697 LF.Imp <> b1 var
+R7754:7757 LF.Imp AExp bexp ind
+R7768:7771 Coq.Init.Datatypes <> bool ind
+R7783:7783 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7796:7800 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7801:7801 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7814:7826 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7827:7832 LF.Imp <> bevalR ind
+R7848:7851 Coq.Init.Datatypes <> andb def
+R7856:7857 LF.Imp <> e2 var
+R7853:7854 LF.Imp <> e1 var
+R7835:7838 LF.Imp AExp BAnd constr
+R7843:7844 LF.Imp <> b2 var
+R7840:7841 LF.Imp <> b1 var
+R7802:7807 LF.Imp <> bevalR ind
+R7812:7813 LF.Imp <> e2 var
+R7809:7810 LF.Imp <> b2 var
+R7784:7789 LF.Imp <> bevalR ind
+R7794:7795 LF.Imp <> e1 var
+R7791:7792 LF.Imp <> b1 var
+prf 7872:7887 AExp beval_iff_bevalR
+R7923:7927 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R7912:7917 LF.Imp AExp bevalR ind
+R7921:7922 LF.Imp <> bv var
+R7919:7919 LF.Imp <> b var
+R7935:7937 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7928:7932 LF.Imp AExp beval def
+R7934:7934 LF.Imp <> b var
+R7938:7939 LF.Imp <> bv var
+R8000:8003 LF.Imp AExp <> mod
+mod 8014:8028 <> aevalR_division
+ind 8043:8046 aevalR_division aexp
+constr 8062:8065 aevalR_division ANum
+constr 8081:8085 aevalR_division APlus
+constr 8106:8111 aevalR_division AMinus
+constr 8132:8136 aevalR_division AMult
+constr 8157:8160 aevalR_division ADiv
+R8072:8074 Coq.Init.Datatypes <> nat ind
+R8076:8076 LF.Imp <> aexp ind
+R8096:8099 LF.Imp <> aexp ind
+R8101:8101 LF.Imp <> aexp ind
+R8122:8125 LF.Imp <> aexp ind
+R8127:8127 LF.Imp <> aexp ind
+R8147:8150 LF.Imp <> aexp ind
+R8152:8152 LF.Imp <> aexp ind
+R8171:8174 LF.Imp <> aexp ind
+R8176:8176 LF.Imp <> aexp ind
+ind 8283:8288 aevalR_division aevalR
+constr 8319:8324 aevalR_division E_ANum
+constr 8362:8368 aevalR_division E_APlus
+constr 8466:8473 aevalR_division E_AMinus
+constr 8572:8578 aevalR_division E_AMult
+constr 8676:8681 aevalR_division E_ADiv
+R8296:8299 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8303:8306 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8300:8302 Coq.Init.Datatypes <> nat ind
+R8292:8295 LF.Imp aevalR_division aexp ind
+R8296:8299 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8303:8306 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8300:8302 Coq.Init.Datatypes <> nat ind
+R8292:8295 LF.Imp aevalR_division aexp ind
+R8833:8838 LF.Imp <> aevalR ind
+R8331:8333 Coq.Init.Datatypes <> nat ind
+R8344:8344 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8351:8355 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8345:8348 LF.Imp aevalR_division ANum constr
+R8350:8350 LF.Imp <> n var
+R8356:8356 LF.Imp <> n var
+R8379:8382 LF.Imp aevalR_division aexp ind
+R8394:8396 Coq.Init.Datatypes <> nat ind
+R8407:8407 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8416:8420 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8421:8421 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8430:8434 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8435:8435 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8447:8452 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8460:8460 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8436:8440 LF.Imp aevalR_division APlus constr
+R8445:8446 LF.Imp <> a2 var
+R8442:8443 LF.Imp <> a1 var
+R8455:8457 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R8453:8454 LF.Imp <> n1 var
+R8458:8459 LF.Imp <> n2 var
+R8424:8427 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8422:8423 LF.Imp <> a2 var
+R8428:8429 LF.Imp <> n2 var
+R8410:8413 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8408:8409 LF.Imp <> a1 var
+R8414:8415 LF.Imp <> n1 var
+R8484:8487 LF.Imp aevalR_division aexp ind
+R8499:8501 Coq.Init.Datatypes <> nat ind
+R8512:8512 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8521:8525 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8526:8526 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8535:8539 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8540:8540 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8553:8558 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8566:8566 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8541:8546 LF.Imp aevalR_division AMinus constr
+R8551:8552 LF.Imp <> a2 var
+R8548:8549 LF.Imp <> a1 var
+R8561:8563 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R8559:8560 LF.Imp <> n1 var
+R8564:8565 LF.Imp <> n2 var
+R8529:8532 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8527:8528 LF.Imp <> a2 var
+R8533:8534 LF.Imp <> n2 var
+R8515:8518 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8513:8514 LF.Imp <> a1 var
+R8519:8520 LF.Imp <> n1 var
+R8589:8592 LF.Imp aevalR_division aexp ind
+R8604:8606 Coq.Init.Datatypes <> nat ind
+R8617:8617 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8626:8630 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8631:8631 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8640:8644 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8645:8645 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8657:8662 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8670:8670 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8646:8650 LF.Imp aevalR_division AMult constr
+R8655:8656 LF.Imp <> a2 var
+R8652:8653 LF.Imp <> a1 var
+R8665:8667 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R8663:8664 LF.Imp <> n1 var
+R8668:8669 LF.Imp <> n2 var
+R8634:8637 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8632:8633 LF.Imp <> a2 var
+R8638:8639 LF.Imp <> n2 var
+R8620:8623 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8618:8619 LF.Imp <> a1 var
+R8624:8625 LF.Imp <> n1 var
+R8692:8695 LF.Imp aevalR_division aexp ind
+R8710:8712 Coq.Init.Datatypes <> nat ind
+R8723:8723 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8732:8736 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8737:8737 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8746:8750 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8751:8751 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8758:8768 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8769:8769 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8785:8789 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8790:8790 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8801:8805 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8791:8794 LF.Imp aevalR_division ADiv constr
+R8799:8800 LF.Imp <> a2 var
+R8796:8797 LF.Imp <> a1 var
+R8806:8807 LF.Imp <> n3 var
+R8780:8782 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8770:8773 Coq.Init.Peano <> mult syndef
+R8778:8779 LF.Imp <> n3 var
+R8775:8776 LF.Imp <> n2 var
+R8783:8784 LF.Imp <> n1 var
+R8754:8756 Coq.Init.Peano <> ::nat_scope:x_'>'_x not
+R8752:8753 LF.Imp <> n2 var
+R8740:8743 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8738:8739 LF.Imp <> a2 var
+R8744:8745 LF.Imp <> n2 var
+R8726:8729 LF.Imp aevalR_division ::type_scope:x_'\\'_x not
+R8724:8725 LF.Imp <> a1 var
+R8730:8731 LF.Imp <> n1 var
+R8833:8838 LF.Imp aevalR_division aevalR ind
+not 8818:8818 aevalR_division ::type_scope:x_'\\'_x
+R8865:8879 LF.Imp aevalR_division <> mod
+mod 8890:8904 <> aevalR_extended
+ind 8990:8993 aevalR_extended aexp
+constr 9011:9014 aevalR_extended AAny
+constr 9037:9040 aevalR_extended ANum
+constr 9058:9062 aevalR_extended APlus
+constr 9085:9090 aevalR_extended AMinus
+constr 9113:9117 aevalR_extended AMult
+R9015:9015 LF.Imp <> aexp ind
+R9047:9049 Coq.Init.Datatypes <> nat ind
+R9051:9051 LF.Imp <> aexp ind
+R9073:9076 LF.Imp <> aexp ind
+R9078:9078 LF.Imp <> aexp ind
+R9101:9104 LF.Imp <> aexp ind
+R9106:9106 LF.Imp <> aexp ind
+R9128:9131 LF.Imp <> aexp ind
+R9133:9133 LF.Imp <> aexp ind
+ind 9150:9155 aevalR_extended aevalR
+constr 9188:9192 aevalR_extended E_Any
+constr 9245:9250 aevalR_extended E_ANum
+constr 9292:9298 aevalR_extended E_APlus
+constr 9400:9407 aevalR_extended E_AMinus
+constr 9510:9516 aevalR_extended E_AMult
+R9163:9166 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9170:9173 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9167:9169 Coq.Init.Datatypes <> nat ind
+R9159:9162 LF.Imp aevalR_extended aexp ind
+R9163:9166 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9170:9173 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9167:9169 Coq.Init.Datatypes <> nat ind
+R9159:9162 LF.Imp aevalR_extended aexp ind
+R9638:9643 LF.Imp <> aevalR ind
+R9199:9201 Coq.Init.Datatypes <> nat ind
+R9218:9221 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9214:9217 LF.Imp aevalR_extended AAny constr
+R9222:9222 LF.Imp <> n var
+R9257:9259 Coq.Init.Datatypes <> nat ind
+R9272:9272 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9279:9283 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9273:9276 LF.Imp aevalR_extended ANum constr
+R9278:9278 LF.Imp <> n var
+R9284:9284 LF.Imp <> n var
+R9309:9312 LF.Imp aevalR_extended aexp ind
+R9324:9326 Coq.Init.Datatypes <> nat ind
+R9339:9339 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9348:9352 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9353:9353 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9362:9366 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9367:9367 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9379:9384 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9392:9392 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9368:9372 LF.Imp aevalR_extended APlus constr
+R9377:9378 LF.Imp <> a2 var
+R9374:9375 LF.Imp <> a1 var
+R9387:9389 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R9385:9386 LF.Imp <> n1 var
+R9390:9391 LF.Imp <> n2 var
+R9356:9359 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9354:9355 LF.Imp <> a2 var
+R9360:9361 LF.Imp <> n2 var
+R9342:9345 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9340:9341 LF.Imp <> a1 var
+R9346:9347 LF.Imp <> n1 var
+R9418:9421 LF.Imp aevalR_extended aexp ind
+R9433:9435 Coq.Init.Datatypes <> nat ind
+R9448:9448 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9457:9461 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9462:9462 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9471:9475 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9476:9476 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9489:9494 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9502:9502 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9477:9482 LF.Imp aevalR_extended AMinus constr
+R9487:9488 LF.Imp <> a2 var
+R9484:9485 LF.Imp <> a1 var
+R9497:9499 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R9495:9496 LF.Imp <> n1 var
+R9500:9501 LF.Imp <> n2 var
+R9465:9468 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9463:9464 LF.Imp <> a2 var
+R9469:9470 LF.Imp <> n2 var
+R9451:9454 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9449:9450 LF.Imp <> a1 var
+R9455:9456 LF.Imp <> n1 var
+R9527:9530 LF.Imp aevalR_extended aexp ind
+R9542:9544 Coq.Init.Datatypes <> nat ind
+R9557:9557 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9566:9570 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9571:9571 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9580:9584 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9585:9585 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9597:9602 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9610:9610 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9586:9590 LF.Imp aevalR_extended AMult constr
+R9595:9596 LF.Imp <> a2 var
+R9592:9593 LF.Imp <> a1 var
+R9605:9607 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R9603:9604 LF.Imp <> n1 var
+R9608:9609 LF.Imp <> n2 var
+R9574:9577 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9572:9573 LF.Imp <> a2 var
+R9578:9579 LF.Imp <> n2 var
+R9560:9563 LF.Imp aevalR_extended ::type_scope:x_'\\'_x not
+R9558:9559 LF.Imp <> a1 var
+R9564:9565 LF.Imp <> n1 var
+R9638:9643 LF.Imp aevalR_extended aevalR ind
+not 9623:9623 aevalR_extended ::type_scope:x_'\\'_x
+R9668:9682 LF.Imp aevalR_extended <> mod
+def 9697:9701 <> state
+R9706:9714 LF.Maps <> total_map def
+R9716:9718 Coq.Init.Datatypes <> nat ind
+ind 9732:9735 <> aexp
+constr 9751:9754 <> ANum
+constr 9770:9772 <> AId
+constr 9806:9810 <> APlus
+constr 9831:9836 <> AMinus
+constr 9857:9861 <> AMult
+R9761:9763 Coq.Init.Datatypes <> nat ind
+R9765:9765 LF.Imp <> aexp ind
+R9779:9784 Coq.Strings.String <> string ind
+R9786:9786 LF.Imp <> aexp ind
+R9821:9824 LF.Imp <> aexp ind
+R9826:9826 LF.Imp <> aexp ind
+R9847:9850 LF.Imp <> aexp ind
+R9852:9852 LF.Imp <> aexp ind
+R9872:9875 LF.Imp <> aexp ind
+R9877:9877 LF.Imp <> aexp ind
+def 9891:9891 <> W
+R9895:9900 Coq.Strings.String <> string ind
+def 9921:9921 <> X
+R9925:9930 Coq.Strings.String <> string ind
+def 9951:9951 <> Y
+R9955:9960 Coq.Strings.String <> string ind
+def 9981:9981 <> Z
+R9985:9990 Coq.Strings.String <> string ind
+ind 10011:10014 <> bexp
+constr 10030:10034 <> BTrue
+constr 10040:10045 <> BFalse
+constr 10051:10053 <> BEq
+constr 10074:10076 <> BLe
+constr 10097:10100 <> BNot
+constr 10117:10120 <> BAnd
+R10035:10035 LF.Imp <> bexp ind
+R10046:10046 LF.Imp <> bexp ind
+R10064:10067 LF.Imp <> aexp ind
+R10069:10069 LF.Imp <> bexp ind
+R10087:10090 LF.Imp <> aexp ind
+R10092:10092 LF.Imp <> bexp ind
+R10107:10110 LF.Imp <> bexp ind
+R10112:10112 LF.Imp <> bexp ind
+R10131:10134 LF.Imp <> bexp ind
+R10136:10136 LF.Imp <> bexp ind
+R10139:10167 LF.Imp <> AId constr
+R10170:10197 LF.Imp <> ANum constr
+def 10212:10223 <> bool_to_bexp
+R10230:10233 Coq.Init.Datatypes <> bool ind
+R10238:10241 LF.Imp <> bexp ind
+R10251:10251 LF.Imp <> b var
+R10269:10274 LF.Imp <> BFalse constr
+R10258:10262 LF.Imp <> BTrue constr
+R10277:10313 LF.Imp <> bool_to_bexp def
+R10435:10439 LF.Imp <> APlus constr
+not 10423:10423 <> ::imp_scope:x_'+'_x
+R10514:10519 LF.Imp <> AMinus constr
+not 10502:10502 <> ::imp_scope:x_'-'_x
+R10594:10598 LF.Imp <> AMult constr
+not 10582:10582 <> ::imp_scope:x_'*'_x
+R10674:10676 LF.Imp <> BLe constr
+not 10661:10661 <> ::imp_scope:x_'<='_x
+R10749:10751 LF.Imp <> BEq constr
+not 10737:10737 <> ::imp_scope:x_'='_x
+R10825:10828 LF.Imp <> BAnd constr
+not 10812:10812 <> ::imp_scope:x_'&&'_x
+R10903:10906 LF.Imp <> BNot constr
+not 10891:10891 <> ::imp_scope:'~'_x
+def 10971:10982 <> example_aexp
+R11007:11010 LF.Imp <> aexp ind
+R10989:10992 LF.Imp <> ::imp_scope:x_'+'_x not
+R10998:10998 LF.Imp <> ::imp_scope:x_'+'_x not
+R10994:10996 LF.Imp <> ::imp_scope:x_'*'_x not
+R10993:10993 LF.Imp <> X def
+def 11024:11035 <> example_bexp
+R11066:11069 LF.Imp <> bexp ind
+R11045:11048 LF.Imp <> ::imp_scope:x_'&&'_x not
+R11041:11044 Coq.Init.Datatypes <> true constr
+R11049:11050 LF.Imp <> ::imp_scope:'~'_x not
+R11057:11057 LF.Imp <> ::imp_scope:'~'_x not
+R11052:11055 LF.Imp <> ::imp_scope:x_'<='_x not
+R11051:11051 LF.Imp <> X def
+def 11082:11086 <> aeval
+R11094:11098 LF.Imp <> state def
+R11106:11109 LF.Imp <> aexp ind
+R11114:11116 Coq.Init.Datatypes <> nat ind
+R11129:11129 LF.Imp <> a var
+R11140:11143 LF.Imp <> ANum constr
+R11156:11158 LF.Imp <> AId constr
+R11165:11166 LF.Imp <> st var
+R11189:11193 LF.Imp <> APlus constr
+R11204:11204 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R11216:11220 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R11232:11232 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R11205:11209 LF.Imp <> aeval def
+R11211:11212 LF.Imp <> st var
+R11221:11225 LF.Imp <> aeval def
+R11227:11228 LF.Imp <> st var
+R11238:11243 LF.Imp <> AMinus constr
+R11254:11254 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R11266:11270 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R11282:11282 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R11255:11259 LF.Imp <> aeval def
+R11261:11262 LF.Imp <> st var
+R11271:11275 LF.Imp <> aeval def
+R11277:11278 LF.Imp <> st var
+R11288:11292 LF.Imp <> AMult constr
+R11303:11303 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R11315:11319 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R11331:11331 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R11304:11308 LF.Imp <> aeval def
+R11310:11311 LF.Imp <> st var
+R11320:11324 LF.Imp <> aeval def
+R11326:11327 LF.Imp <> st var
+def 11349:11353 <> beval
+R11361:11365 LF.Imp <> state def
+R11373:11376 LF.Imp <> bexp ind
+R11381:11384 Coq.Init.Datatypes <> bool ind
+R11397:11397 LF.Imp <> b var
+R11408:11412 LF.Imp <> BTrue constr
+R11417:11420 Coq.Init.Datatypes <> true constr
+R11426:11431 LF.Imp <> BFalse constr
+R11436:11440 Coq.Init.Datatypes <> false constr
+R11446:11448 LF.Imp <> BEq constr
+R11459:11459 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R11471:11476 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R11488:11488 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R11460:11464 LF.Imp <> aeval def
+R11466:11467 LF.Imp <> st var
+R11477:11481 LF.Imp <> aeval def
+R11483:11484 LF.Imp <> st var
+R11494:11496 LF.Imp <> BLe constr
+R11507:11507 Coq.Init.Nat <> ::nat_scope:x_'<=?'_x not
+R11519:11525 Coq.Init.Nat <> ::nat_scope:x_'<=?'_x not
+R11537:11537 Coq.Init.Nat <> ::nat_scope:x_'<=?'_x not
+R11508:11512 LF.Imp <> aeval def
+R11514:11515 LF.Imp <> st var
+R11526:11530 LF.Imp <> aeval def
+R11532:11533 LF.Imp <> st var
+R11543:11546 LF.Imp <> BNot constr
+R11554:11557 Coq.Init.Datatypes <> negb def
+R11560:11564 LF.Imp <> beval def
+R11566:11567 LF.Imp <> st var
+R11577:11580 LF.Imp <> BAnd constr
+R11591:11594 Coq.Init.Datatypes <> andb def
+R11611:11615 LF.Imp <> beval def
+R11617:11618 LF.Imp <> st var
+R11597:11601 LF.Imp <> beval def
+R11603:11604 LF.Imp <> st var
+def 11643:11650 <> empty_st
+R11656:11661 LF.Maps <> :::'''_'''_'!->'_x not
+R11692:11699 LF.Maps <> t_update def
+R11701:11708 LF.Imp <> empty_st def
+not 11676:11676 <> :::x_'!->'_x
+ind 11742:11744 <> com
+constr 11758:11762 <> CSkip
+constr 11766:11769 <> CAss
+constr 11795:11798 <> CSeq
+constr 11815:11817 <> CIf
+constr 11844:11849 <> CWhile
+R11763:11763 LF.Imp <> com ind
+R11775:11780 Coq.Strings.String <> string ind
+R11787:11790 LF.Imp <> aexp ind
+R11792:11792 LF.Imp <> com ind
+R11808:11810 LF.Imp <> com ind
+R11812:11812 LF.Imp <> com ind
+R11823:11826 LF.Imp <> bexp ind
+R11837:11839 LF.Imp <> com ind
+R11841:11841 LF.Imp <> com ind
+R11855:11858 LF.Imp <> bexp ind
+R11865:11867 LF.Imp <> com ind
+R11869:11869 LF.Imp <> com ind
+R11928:11932 LF.Imp <> CSkip constr
+not 11913:11913 <> ::imp_scope:'SKIP'
+R11974:11977 LF.Imp <> CAss constr
+not 11956:11956 <> ::imp_scope:x_'::='_x
+R12037:12040 LF.Imp <> CSeq constr
+not 12020:12020 <> ::imp_scope:x_';;'_x
+R12137:12142 LF.Imp <> CWhile constr
+not 12106:12106 <> ::imp_scope:'WHILE'_x_'DO'_x_'END'
+R12249:12251 LF.Imp <> CIf constr
+not 12206:12206 <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI'
+def 12324:12334 <> fact_in_coq
+R12338:12340 LF.Imp <> com ind
+R12355:12359 LF.Imp <> ::imp_scope:x_';;'_x not
+R12349:12353 LF.Imp <> ::imp_scope:x_'::='_x not
+R12348:12348 LF.Imp <> Z def
+R12354:12354 LF.Imp <> X def
+R12367:12371 LF.Imp <> ::imp_scope:x_';;'_x not
+R12361:12365 LF.Imp <> ::imp_scope:x_'::='_x not
+R12360:12360 LF.Imp <> Y def
+R12372:12377 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R12386:12393 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R12423:12428 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R12378:12379 LF.Imp <> ::imp_scope:'~'_x not
+R12385:12385 LF.Imp <> ::imp_scope:'~'_x not
+R12381:12383 LF.Imp <> ::imp_scope:x_'='_x not
+R12380:12380 LF.Imp <> Z def
+R12405:12411 LF.Imp <> ::imp_scope:x_';;'_x not
+R12395:12399 LF.Imp <> ::imp_scope:x_'::='_x not
+R12394:12394 LF.Imp <> Y def
+R12401:12403 LF.Imp <> ::imp_scope:x_'*'_x not
+R12400:12400 LF.Imp <> Y def
+R12404:12404 LF.Imp <> Z def
+R12413:12417 LF.Imp <> ::imp_scope:x_'::='_x not
+R12412:12412 LF.Imp <> Z def
+R12419:12421 LF.Imp <> ::imp_scope:x_'-'_x not
+R12418:12418 LF.Imp <> Z def
+R12469:12479 LF.Imp <> fact_in_coq def
+def 12563:12567 <> plus2
+R12570:12572 LF.Imp <> com ind
+R12580:12584 LF.Imp <> ::imp_scope:x_'::='_x not
+R12579:12579 LF.Imp <> X def
+R12586:12588 LF.Imp <> ::imp_scope:x_'+'_x not
+R12585:12585 LF.Imp <> X def
+def 12604:12612 <> XtimeYinZ
+R12615:12617 LF.Imp <> com ind
+R12625:12629 LF.Imp <> ::imp_scope:x_'::='_x not
+R12624:12624 LF.Imp <> Z def
+R12631:12633 LF.Imp <> ::imp_scope:x_'*'_x not
+R12630:12630 LF.Imp <> X def
+R12634:12634 LF.Imp <> Y def
+def 12649:12668 <> subtract_slowly_body
+R12671:12673 LF.Imp <> com ind
+R12691:12696 LF.Imp <> ::imp_scope:x_';;'_x not
+R12681:12685 LF.Imp <> ::imp_scope:x_'::='_x not
+R12680:12680 LF.Imp <> Z def
+R12687:12689 LF.Imp <> ::imp_scope:x_'-'_x not
+R12686:12686 LF.Imp <> Z def
+R12698:12702 LF.Imp <> ::imp_scope:x_'::='_x not
+R12697:12697 LF.Imp <> X def
+R12704:12706 LF.Imp <> ::imp_scope:x_'-'_x not
+R12703:12703 LF.Imp <> X def
+def 12722:12736 <> subtract_slowly
+R12739:12741 LF.Imp <> com ind
+R12749:12754 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R12763:12775 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R12796:12801 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R12755:12756 LF.Imp <> ::imp_scope:'~'_x not
+R12762:12762 LF.Imp <> ::imp_scope:'~'_x not
+R12758:12760 LF.Imp <> ::imp_scope:x_'='_x not
+R12757:12757 LF.Imp <> X def
+R12776:12795 LF.Imp <> subtract_slowly_body def
+def 12821:12844 <> subtract_3_from_5_slowly
+R12847:12849 LF.Imp <> com ind
+R12863:12868 LF.Imp <> ::imp_scope:x_';;'_x not
+R12857:12861 LF.Imp <> ::imp_scope:x_'::='_x not
+R12856:12856 LF.Imp <> X def
+R12876:12881 LF.Imp <> ::imp_scope:x_';;'_x not
+R12870:12874 LF.Imp <> ::imp_scope:x_'::='_x not
+R12869:12869 LF.Imp <> Z def
+R12882:12901 LF.Imp <> subtract_slowly_body def
+def 12916:12919 <> loop
+R12923:12925 LF.Imp <> com ind
+R12932:12937 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R12942:12949 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R12954:12959 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R12938:12941 Coq.Init.Datatypes <> true constr
+R12950:12953 LF.Imp <> ::imp_scope:'SKIP' not
+ind 13039:13043 <> ceval
+constr 13081:13086 <> E_Skip
+constr 13124:13128 <> E_Ass
+constr 13212:13216 <> E_Seq
+constr 13325:13332 <> E_IfTrue
+constr 13456:13464 <> E_IfFalse
+constr 13589:13600 <> E_WhileFalse
+constr 13680:13690 <> E_WhileTrue
+R13049:13052 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13058:13061 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13067:13070 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13062:13066 LF.Imp <> state def
+R13053:13057 LF.Imp <> state def
+R13046:13048 LF.Imp <> com ind
+R13049:13052 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13058:13061 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13067:13070 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13062:13066 LF.Imp <> state def
+R13053:13057 LF.Imp <> state def
+R13046:13048 LF.Imp <> com ind
+R13869:13873 LF.Imp <> ceval ind
+R13106:13109 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13114:13118 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13110:13113 LF.Imp <> ::imp_scope:'SKIP' not
+R13104:13105 LF.Imp <> st var
+R13119:13120 LF.Imp <> st var
+R13168:13175 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13178:13181 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13190:13195 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13208:13208 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13183:13187 LF.Imp <> ::imp_scope:x_'::='_x not
+R13182:13182 LF.Imp <> x var
+R13188:13189 LF.Imp <> a1 var
+R13176:13177 LF.Imp <> st var
+R13197:13201 LF.Maps <> :::x_'!->'_x_';'_x not
+R13203:13205 LF.Maps <> :::x_'!->'_x_';'_x not
+R13206:13207 LF.Imp <> st var
+R13196:13196 LF.Imp <> x var
+R13202:13202 LF.Imp <> n var
+R13164:13166 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13153:13157 LF.Imp <> aeval def
+R13162:13163 LF.Imp <> a1 var
+R13159:13160 LF.Imp <> st var
+R13167:13167 LF.Imp <> n var
+R13265:13272 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13291:13298 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13301:13304 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13313:13317 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13307:13310 LF.Imp <> ::imp_scope:x_';;'_x not
+R13305:13306 LF.Imp <> c1 var
+R13311:13312 LF.Imp <> c2 var
+R13299:13300 LF.Imp <> st var
+R13318:13321 LF.Imp <> st'' var
+R13276:13279 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13282:13286 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13280:13281 LF.Imp <> c2 var
+R13273:13275 LF.Imp <> st' var
+R13287:13290 LF.Imp <> st'' var
+R13251:13254 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13257:13261 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13255:13256 LF.Imp <> c1 var
+R13249:13250 LF.Imp <> st var
+R13262:13264 LF.Imp <> st' var
+R13381:13388 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13405:13412 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13415:13418 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13445:13449 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13419:13423 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13426:13431 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13434:13439 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13442:13444 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13424:13425 LF.Imp <> b1 var
+R13432:13433 LF.Imp <> c1 var
+R13440:13441 LF.Imp <> c2 var
+R13413:13414 LF.Imp <> st var
+R13450:13452 LF.Imp <> st' var
+R13391:13394 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13397:13401 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13395:13396 LF.Imp <> c1 var
+R13389:13390 LF.Imp <> st var
+R13402:13404 LF.Imp <> st' var
+R13374:13376 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13363:13367 LF.Imp <> beval def
+R13372:13373 LF.Imp <> b1 var
+R13369:13370 LF.Imp <> st var
+R13377:13380 Coq.Init.Datatypes <> true constr
+R13514:13521 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13538:13545 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13548:13551 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13578:13582 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13552:13556 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13559:13564 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13567:13572 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13575:13577 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13557:13558 LF.Imp <> b1 var
+R13565:13566 LF.Imp <> c1 var
+R13573:13574 LF.Imp <> c2 var
+R13546:13547 LF.Imp <> st var
+R13583:13585 LF.Imp <> st' var
+R13524:13527 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13530:13534 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13528:13529 LF.Imp <> c2 var
+R13522:13523 LF.Imp <> st var
+R13535:13537 LF.Imp <> st' var
+R13506:13508 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13495:13499 LF.Imp <> beval def
+R13504:13505 LF.Imp <> b1 var
+R13501:13502 LF.Imp <> st var
+R13509:13513 Coq.Init.Datatypes <> false constr
+R13640:13647 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13650:13653 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13670:13674 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13654:13659 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R13661:13664 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R13666:13669 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R13660:13660 LF.Imp <> b var
+R13665:13665 LF.Imp <> c var
+R13648:13649 LF.Imp <> st var
+R13675:13676 LF.Imp <> st var
+R13632:13634 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13622:13626 LF.Imp <> beval def
+R13631:13631 LF.Imp <> b var
+R13628:13629 LF.Imp <> st var
+R13635:13639 Coq.Init.Datatypes <> false constr
+R13738:13745 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13761:13768 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13801:13808 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13811:13814 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13831:13835 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13815:13820 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R13822:13825 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R13827:13830 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R13821:13821 LF.Imp <> b var
+R13826:13826 LF.Imp <> c var
+R13809:13810 LF.Imp <> st var
+R13836:13839 LF.Imp <> st'' var
+R13772:13775 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13792:13796 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13776:13781 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R13783:13786 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R13788:13791 LF.Imp <> ::imp_scope:'WHILE'_x_'DO'_x_'END' not
+R13782:13782 LF.Imp <> b var
+R13787:13787 LF.Imp <> c var
+R13769:13771 LF.Imp <> st' var
+R13797:13800 LF.Imp <> st'' var
+R13748:13751 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13753:13757 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13752:13752 LF.Imp <> c var
+R13746:13747 LF.Imp <> st var
+R13758:13760 LF.Imp <> st' var
+R13731:13733 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13721:13725 LF.Imp <> beval def
+R13730:13730 LF.Imp <> b var
+R13727:13728 LF.Imp <> st var
+R13734:13737 Coq.Init.Datatypes <> true constr
+R13869:13873 LF.Imp <> ceval ind
+not 13847:13847 <> :::x_'=['_x_']=>'_x
+def 13895:13908 <> ceval_example1
+R13921:13928 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13999:14006 LF.Imp <> :::x_'=['_x_']=>'_x not
+R14024:14024 LF.Imp <> :::x_'=['_x_']=>'_x not
+R13936:13942 LF.Imp <> ::imp_scope:x_';;'_x not
+R13930:13934 LF.Imp <> ::imp_scope:x_'::='_x not
+R13929:13929 LF.Imp <> X def
+R13943:13947 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13954:13965 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13973:13984 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13992:13998 LF.Imp <> ::imp_scope:'TEST'_x_'THEN'_x_'ELSE'_x_'FI' not
+R13949:13952 LF.Imp <> ::imp_scope:x_'<='_x not
+R13948:13948 LF.Imp <> X def
+R13967:13971 LF.Imp <> ::imp_scope:x_'::='_x not
+R13966:13966 LF.Imp <> Y def
+R13986:13990 LF.Imp <> ::imp_scope:x_'::='_x not
+R13985:13985 LF.Imp <> Z def
+R13913:13920 LF.Imp <> empty_st def
+R14008:14012 LF.Maps <> :::x_'!->'_x_';'_x not
+R14014:14016 LF.Maps <> :::x_'!->'_x_';'_x not
+R14018:14022 LF.Imp <> :::x_'!->'_x not
+R14017:14017 LF.Imp <> X def
+R14007:14007 LF.Imp <> Z def
+R14055:14059 LF.Imp <> :::x_'!->'_x not
+R14054:14054 LF.Imp <> X def
+R14042:14046 LF.Imp <> E_Seq constr
+R14055:14059 LF.Imp <> :::x_'!->'_x not
+R14054:14054 LF.Imp <> X def
+R14042:14046 LF.Imp <> E_Seq constr
+R14074:14078 LF.Imp <> E_Ass constr
+R14074:14078 LF.Imp <> E_Ass constr
+R14104:14112 LF.Imp <> E_IfFalse constr
+R14104:14112 LF.Imp <> E_IfFalse constr
+R14138:14142 LF.Imp <> E_Ass constr
+R14138:14142 LF.Imp <> E_Ass constr
+R14182:14186 LF.Imp <> ceval ind
+R14206:14210 LF.Imp <> state def
+R14230:14238 LF.Maps <> total_map def
+def 14250:14263 <> ceval_example2
+R14276:14283 LF.Imp <> :::x_'=['_x_']=>'_x not
+R14313:14320 LF.Imp <> :::x_'=['_x_']=>'_x not
+R14346:14346 LF.Imp <> :::x_'=['_x_']=>'_x not
+R14291:14294 LF.Imp <> ::imp_scope:x_';;'_x not
+R14285:14289 LF.Imp <> ::imp_scope:x_'::='_x not
+R14284:14284 LF.Imp <> X def
+R14302:14305 LF.Imp <> ::imp_scope:x_';;'_x not
+R14296:14300 LF.Imp <> ::imp_scope:x_'::='_x not
+R14295:14295 LF.Imp <> Y def
+R14307:14311 LF.Imp <> ::imp_scope:x_'::='_x not
+R14306:14306 LF.Imp <> Z def
+R14268:14275 LF.Imp <> empty_st def
+R14322:14326 LF.Maps <> :::x_'!->'_x_';'_x not
+R14328:14329 LF.Maps <> :::x_'!->'_x_';'_x not
+R14331:14335 LF.Maps <> :::x_'!->'_x_';'_x not
+R14337:14338 LF.Maps <> :::x_'!->'_x_';'_x not
+R14340:14344 LF.Imp <> :::x_'!->'_x not
+R14339:14339 LF.Imp <> X def
+R14330:14330 LF.Imp <> Y def
+R14321:14321 LF.Imp <> Z def
+R14365:14369 LF.Imp <> E_Seq constr
+R14365:14369 LF.Imp <> E_Seq constr
+R14382:14386 LF.Imp <> E_Ass constr
+R14382:14386 LF.Imp <> E_Ass constr
+R14557:14559 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14560:14563 Coq.Init.Datatypes <> true constr
+R14557:14559 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14560:14563 Coq.Init.Datatypes <> true constr
+R14576:14578 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14579:14583 Coq.Init.Datatypes <> false constr
+R14576:14578 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14579:14583 Coq.Init.Datatypes <> false constr
+R14674:14677 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14680:14682 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14673:14673 LF.Imp <> x var
+R14674:14677 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14680:14682 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14673:14673 LF.Imp <> x var
+prf 14752:14770 <> ceval_deterministic
+R14813:14820 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14836:14843 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R14847:14849 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14844:14846 LF.Imp <> st1 var
+R14850:14852 LF.Imp <> st2 var
+R14823:14826 LF.Imp <> :::x_'=['_x_']=>'_x not
+R14828:14832 LF.Imp <> :::x_'=['_x_']=>'_x not
+R14827:14827 LF.Imp <> c var
+R14821:14822 LF.Imp <> st var
+R14833:14835 LF.Imp <> st2 var
+R14800:14803 LF.Imp <> :::x_'=['_x_']=>'_x not
+R14805:14809 LF.Imp <> :::x_'=['_x_']=>'_x not
+R14804:14804 LF.Imp <> c var
+R14798:14799 LF.Imp <> st var
+R14810:14812 LF.Imp <> st1 var

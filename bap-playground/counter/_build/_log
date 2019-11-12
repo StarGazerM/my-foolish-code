@@ -1,0 +1,18 @@
+### Starting build.
+# Target: counter.ml.depends, tags: { package(bap), package(core_kernel), package(ppx_jane), pp(ppx-jane -dump-ast -inline-test-drop), predicate(custom_ppx), predicate(ppxlib), custom, debug, extension:ml, file:counter.ml, ocaml, ocamldep, quiet, short_paths, thread, traverse }
+ocamlfind ocamldep -package ppx_jane -package core_kernel -package bap -pp 'ppx-jane -dump-ast -inline-test-drop' -predicates custom_ppx -predicates ppxlib -modules counter.ml > counter.ml.depends
+# Target: counter.cmo, tags: { package(bap), package(core_kernel), package(ppx_jane), pp(ppx-jane -dump-ast -inline-test-drop), predicate(custom_ppx), predicate(ppxlib), byte, compile, custom, debug, extension:cmo, extension:ml, file:counter.cmo, file:counter.ml, implem, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlc -c -g -short-paths -thread -package ppx_jane -package core_kernel -package bap -pp 'ppx-jane -dump-ast -inline-test-drop' -predicates custom_ppx -predicates ppxlib -o counter.cmo counter.ml
+# Target: counter.cmx, tags: { package(bap), package(core_kernel), package(ppx_jane), pp(ppx-jane -dump-ast -inline-test-drop), predicate(custom_ppx), predicate(ppxlib), compile, custom, debug, extension:cmx, extension:ml, file:counter.cmx, file:counter.ml, implem, native, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlopt -c -g -short-paths -thread -package ppx_jane -package core_kernel -package bap -pp 'ppx-jane -dump-ast -inline-test-drop' -predicates custom_ppx -predicates ppxlib -o counter.cmx counter.ml
+# Target: counter.cmxa, tags: { package(bap), package(core_kernel), package(ppx_jane), pp(ppx-jane -dump-ast -inline-test-drop), predicate(custom_ppx), predicate(ppxlib), custom, debug, dont_link_with, extension:cmxa, file:counter.cmxa, library, link, native, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlopt -a -thread -package ppx_jane -package core_kernel -package bap -pp 'ppx-jane -dump-ast -inline-test-drop' -predicates custom_ppx -predicates ppxlib counter.cmx -o counter.cmxa
+# Target: counter.cmxs, tags: {  }
+ocamlfind ocamlopt -shared -linkall -ccopt -L -ccopt . counter.cmxa -o counter.cmxs
+# Target: counter.cma, tags: { package(bap), package(core_kernel), package(ppx_jane), pp(ppx-jane -dump-ast -inline-test-drop), predicate(custom_ppx), predicate(ppxlib), byte, custom, debug, dont_link_with, extension:cma, file:counter.cma, library, link, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlc -a -custom -thread -package ppx_jane -package core_kernel -package bap -pp 'ppx-jane -dump-ast -inline-test-drop' -predicates custom_ppx -predicates ppxlib counter.cmo -o counter.cma
+# Target: counter.plugin, tags: { bundle, library, plugin }
+bapbundle pack -name counter -main counter.cmxs -main counter.cma -provides counter counter.plugin
+# Target: ln -sf /home/stargazermiao/workspace/ocaml/bap-playground/counter/_build/counter.plugin .., tags: {  }
+ln -sf /home/stargazermiao/workspace/ocaml/bap-playground/counter/_build/counter.plugin ..
+# Compilation successful.

@@ -127,6 +127,8 @@ ind 1527:1528 Props.Ex ex
 constr 1575:1582 Props.Ex ex_intro
 R1547:1550 Coq.Init.Logic <> ::type_scope:x_'->'_x not
 R1546:1546 LF.ProofObjects <> A var
+R1547:1550 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1546:1546 LF.ProofObjects <> A var
 R1597:1597 LF.ProofObjects <> A var
 R1603:1606 Coq.Init.Logic <> ::type_scope:x_'->'_x not
 R1607:1608 LF.ProofObjects <> ex ind
@@ -153,6 +155,8 @@ R1819:1823 LF.ProofObjects Props <> mod
 mod 1836:1845 <> MyEquality
 ind 1863:1864 MyEquality eq
 constr 1901:1907 MyEquality eq_refl
+R1878:1881 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1883:1886 Coq.Init.Logic <> ::type_scope:x_'->'_x not
 R1878:1881 Coq.Init.Logic <> ::type_scope:x_'->'_x not
 R1883:1886 Coq.Init.Logic <> ::type_scope:x_'->'_x not
 R1920:1921 LF.ProofObjects <> eq ind
