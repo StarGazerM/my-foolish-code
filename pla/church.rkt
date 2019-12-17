@@ -13,7 +13,7 @@
 (require "./metacircular.rkt")
 
 ;; before we start let's see still use some primitive form racket
-(define prims '(+ * add1 cons car cdr null? not))
+(define prims '(= + * add1 cons car cdr null? not))
 
 (define (churchify-prim prim)
   (string->symbol (string-append "church:" (symbol->string prim))))
@@ -50,7 +50,6 @@
      (λ (f) (λ (x)
        ((n (m f)) x))))))
 
-
 ;; boolean
 ;; cause boolean is something used to condition check, we can make it
 ;; a function can work with ture and false callback, #t just return
@@ -62,6 +61,13 @@
 
 (define church:fls
   '(λ (t) (λ (f) f)))
+
+(define church:zero? `(λ (n0) ((n0 (λ (b) ,church:fls)) ,church:tru)))
+
+(define church:= `(λ (n0)
+                    (λ (n1)
+                      (and (,church:zero? (,church:- n0 n1)) (,church:zero? (,church:- n1 n0))))))
+
 
 ;; tool function to convert a number in meta language(racket)
 ;; into churh encoding
@@ -97,7 +103,7 @@
     ;; anonymous lambda, we just put a dummy arg _ there, since
     ;; church require all function be curify
     [`(λ () ,e) ;=>
-     `(λ (_) ,(churchify e))]
+     `(churchify e)]
     [`(λ (,arg) ,e) ;=>
      `(λ (,arg) ,(churchify e))]
     [`(λ (,arg . ,res) ,e) ;=>
@@ -115,14 +121,15 @@
     ;; TODO: implement multi-clause letrec
     [`(letrec ([,(? symbol? name) ,(? expr? bind-body)])
          ,(? expr? body))
-      (churchify `(let* ([,name (,y-comb (λ (,name) ,bind-body))])
+     (churchify `(let* ([,name (((λ (x) (x x)) (λ (y) (λ (f) (f (λ (x) (((y y) f) x))))))
+                                (λ (,name) ,bind-body))])
                     ,body))]
     ;; condition
     [`(if ,e0 ,e1 ,e2) ;=>
-     `((,(churchify e0) (λ (_) ,(churchify e1))) (λ (_) ,(churchify e2)))]
+     `((,(churchify e0) ,(churchify e1)) ,(churchify e2))]
     ;; just desugar or/and to if
     [`(and ,e0 ,e1) ;=>
-     (churchify `(if ,e0 (if ,e1 #f) #f))]
+     (churchify `(if ,e0 (if ,e1 #t #f) #f))]
     [`(or ,e0 ,e1) ;=>
      (churchify `(if ,e0 #t ,e1))]
     ;; datum
@@ -131,6 +138,12 @@
     ;; the arith
     [`(+ ,n0 ,n2) ;=>
      `((,church:+ ,(churchify n0)) ,(churchify n2))]
+    [`(- ,n0 ,n2) ;=>
+     `((,church:- ,(churchify n0)) ,(churchify n2))]
+    [`(= ,n0 ,n2)
+     `((,(churchify church:=) ,(churchify n0)) ,(churchify n2))]
+    [`(add1 ,n)
+     `((λ (n) (λ (f) (λ (x) (n (f x))))) ,(churchify n))]
     [#t ;=>
      church:tru]
     [#f ;=>
@@ -152,5 +165,9 @@
 
 
 ;; tests
-
+(churchify '(letrec ([f (λ (x)
+                           (if (= x 3)
+                               1
+                               (+ 1 (f (+ 1 x)))))])
+               (f 0)))
 

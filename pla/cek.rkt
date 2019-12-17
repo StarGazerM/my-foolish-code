@@ -83,8 +83,8 @@
       [else (error (format "stuck at ill form ~s" norm))])))
 
 ;; test ck machine
-(eval-ck
- (inject-ck '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
+;; (eval-ck
+;;  (inject-ck '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
 
 ;; the init state is ((((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m))) mt)
 ;; ck--> (((λ (x) x) (λ (y) y)) (arg ((λ (z) z) (λ (m) m)) mt))
@@ -190,7 +190,7 @@
 
 ;; test cek machine
 (eval-cek
- (inject-cek '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
+ (inject-cek '((λ (x) (x x)) (λ (y) y))))
 
 ;; the init state is (((((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m))) #hash()) mt)
 ;; cek--> ((((λ (x) x) (λ (y) y)) #hash()) (arg (((λ (z) z) (λ (m) m)) #hash()) mt))
@@ -277,9 +277,10 @@
       [else (error (format "stuck at ill form ~s" norm))])))
 
 ;; test cesk machine
+;; (eval-cesk
+;;  (inject-cesk '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
 (eval-cesk
- (inject-cesk '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
-
+ (inject-cesk '((λ (x) (x x)) (λ (y) y))))
 
 ;; In CESK machine, we can still find the continuation is a recursive strcuture
 ;; we can use the similar method to make continuation a "linked list" like thing
@@ -358,8 +359,8 @@
       [else (error (format "stuck at ill form ~s" norm))])))
 
 ;; test cesk machine
-(eval-cesk*
- (inject-cesk* '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
+;; (eval-cesk*
+;;  (inject-cesk* '(((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m)))))
 
 ;; for abstract reason, we need to add abstract value to abstract
 ;; abstract machine, in order to make our analysis more presise,
@@ -455,5 +456,5 @@
       [else (error (format "stuck at ill form ~s" norm))])))
 
 ;; test
-(eval-time-stamped-cesk*
- (inject-time-stamped-cesk* '((((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m))) (λ (g) g))))
+;; (eval-time-stamped-cesk*
+;;  (inject-time-stamped-cesk* '((((λ (x) x) (λ (y) y)) ((λ (z) z) (λ (m) m))) (λ (g) g))))

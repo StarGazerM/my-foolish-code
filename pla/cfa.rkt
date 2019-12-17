@@ -68,7 +68,11 @@
      ;;     ;; if not exist create a new addr
      ;;     (let ([new-addr (gensym)])
      ;;       (set! alloc-map (hash-set alloc-map `(,c ,k) new-addr))
-     ;;       new-addr))]))
+;;       new-addr))]))
+(define (alloc₀ ς k)
+  (match ς
+    [`(,c ,ρ ,σ ,a)  c]
+    [(? symbol? x) x]))
 
 (define (state-info ς)
   (match ς
@@ -167,12 +171,13 @@
 (define (evals ς)
   (displayln "the init state is")
   (pretty-display ς)
-  (multistep ς '() ""));; test 
+  (multistep ς '() ""))
+;; test
 ;; (evals
-;;  (inject '((λ (f) (f f)) (λ (g) (g g)))))
+;;  (inject '((λ (f) (f f)) (λ (g) (g ))g)))
 
 ;; gen graph viz
-(display (evals (inject '((λ (f) (f f)) (λ (g) (g g))))))
+(display (evals (inject '((λ (x) (x x)) (λ (y) y)))))
 
 (define (output)
   (define out (open-output-file "cfa.dot" #:exists 'truncate))
@@ -181,4 +186,4 @@
            out)
   (close-output-port out))
 
-(output)
+;; (output)
