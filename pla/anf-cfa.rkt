@@ -103,7 +103,7 @@
 
 ;; Create a CESK state from a term e
 (define (inject e)
-  `(,e ,(hash) ,(hash '• 'mt) •))
+  `(,e ,(hash) ,(hash '• (set 'mt)) ,'•))
 
 ;; Examples
 (define id-id '(let ([x (lambda (x) x)]) (x x)))
@@ -130,8 +130,8 @@
 
 ;; non-deterministic Step relation: Σ → {Σ}
 (define (step ς)
-  ;; (displayln "hasdf")
-  ;; (pretty-print ς)
+  (displayln "hasdf")
+  (pretty-print ς)
   (match ς
     ;; Handle a let: step into `e` while remembering (via the `let`
     ;; continuation) to go back and bind x within ρ before proceeding
@@ -158,9 +158,10 @@
     [`((if ,(? aexpr? econd) ,(? expr? tbranch) ,(? expr? fbranch)) ,ρ ,σ ,κₐ)
      (set-map (aeval econd ρ σ)
               (λ (econdᵥ)
-                (match (econdᵥ)
+                (match econdᵥ
                   [#t `(,tbranch ,ρ ,σ ,κₐ)]
                   [#f `(,fbranch ,ρ ,σ ,κₐ)])))]
+    ;; TODO: support multi arg continuation
     ;; call/cc, step into body and make continuation bind to x
     ;; apply a countinutaion, and it only take one argument
     ;; it will give up current and jump back to call/cc point
@@ -168,7 +169,6 @@
     ;;  `(,ae ,ρ ,k-ap)]
     [`((call/cc (lambda (,x) ,body)) ,ρ ,σ ,κₐ)
      (set (let ([α (alloc₀ ς)])
-            ;; TODO: call site problem here
             `(,body ,(hash-set ρ x κₐ) ,σ ,κₐ)))]
     ;; Returns. You should specify how to handle when an atomic
     ;; expression is in return position. Because this is an A-Normal
@@ -196,8 +196,9 @@
               (λ (ae0ᵥ)
                 (match ae0ᵥ
                   [(? kont? k-ap)
+                   ;; (displayln ae0ᵥ)
                    ;; continuation can only apply to one element
-                   `(,(first aes) ,ρ ,σ ,k-ap)]
+                   `(,(first aes) ,ρ ,σ ,(hash-ref ρ ae0))]
                   [`(clo (lambda (,xs ...) ,e-body) ,ρ-prime)
                    ;; eval in one time
                    (let ([env&stos
@@ -309,9 +310,9 @@
 ;; (displayln ">>>>>>>>>>>>>>>>>>>>>>>>>>")
 ;; (displayln "test for call/cc")
 ;; (iterate (inject ccc))
-;; (displayln ">>>>>>>>>>>>>>>>>>>>>>>>>>")
-;; (display "test for if")
-;; (iterate (inject if-f))
+(displayln ">>>>>>>>>>>>>>>>>>>>>>>>>>")
+(display "test for if")
+(iterate (inject if-f))
 
 ;; ;; Top level entry point to the program
 ;; (repl)
