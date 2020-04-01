@@ -1,4 +1,4 @@
-;; this code is a AAM style CFA example for ANF-converted scheme style
+;; this code is a AAM style k-CFA example for ANF-converted scheme style
 ;; lambda calculus, support `if` `letrec` `call/cc` and multi arguments lambda
 ;; most of code is from Kris Micinski's Syracuse CIS700 course homework
 ;; Yihao Sun <ysun67@syr.edu>
@@ -7,8 +7,22 @@
 #lang racket
 
 (require racket/hash)
+
+;; tuneable parameter in k-CFA framework
+(define k (make-parameter 1))
+
 ;; ANF Lambda calculus
 ;; Definition of core language
+
+;; some binary operator will be passed in
+(define (prim? op)
+  (member op '(+ - * / or and)))
+
+(define (get-prim opstr)
+  (hash-ref opstr (hash '+ +
+                        '- -
+                        '* *
+                        '/ /)))
 
 ;; Atomic expressions
 (define (aexpr? ae)
@@ -23,6 +37,9 @@
     [`(lambda (,(? symbol? xs) ...) ,(? expr?)) #t]
     ;; first order continuation
     [(? kont?) #t]
+    ;; primive binary operation (not strictly atomic actually)
+    ;; only primitive type , number bool can be passed in
+    [`(,(? prim?) ,(? aexpr?) ,(? aexpr?)) #t]
     [else #f]))
 
 ;; Expression language
@@ -46,15 +63,33 @@
 (define (lit? l)
   (or (number? l) (boolean? l)))
 
+;; l ∈ Label, Label :: list Expr
+;; Label in k CESK* machine is a list of control string with
+;; at most length k
+(define (label? l)
+  (if (< (length l) k)
+      (andmap addr? l)
+      #f))
+
+;; tick(ς) : Σ → Label
+;; tick function for k-CFA
+(define (tick ς))
 
 ;; allocator function this is key of precision in AAM-style CFA
 ;; allocₖ(ς) : State → Addr
-;; bellow is the allocator funtion for 0-CFA
+;; bellow is the allocator funtion for k-CFA
 ;; in 0-CFA addrs is the syntax form of control string
-(define (addr? κₐ) (expr? κₐ))
+;; in k-CFA addrs is the Expr × Label
+(define (addr? κₐ)
+  (match κₐ
+    [(? expr?) #t]
+    [`(,(? expr? e) ,(? label? l)) #t]))
 (define (alloc₀ ς)
   (match ς
     [`(,e ,ρ ,σ ,κₐ) e]))
+(define (allocₖ ς)
+  (match ς
+    [`(,e ,ρ ,σ ,l ,κₐ) `(,e ,l)]))
 
 
 ;; ρ ∈ Env, Environments
@@ -125,7 +160,9 @@
     [(? number? n) (set n)]
     [(? boolean? b) (set b)]
     [(? symbol? x) (hash-ref σ (hash-ref ρ x))]
-    [`(lambda (,x) ,e) (set `(clo ,ae ,ρ))]))
+    [`(lambda (,x) ,e) (set `(clo ,ae ,ρ))]
+    [`(,(? prim? op) ,(? aexpr? ae₀) ,(? aexpr? ae₁))
+     (set ((get-prim op) ae₀ ae₁))]))
 
 
 ;; non-deterministic Step relation: Σ → {Σ}
