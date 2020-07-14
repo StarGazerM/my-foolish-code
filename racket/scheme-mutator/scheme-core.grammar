@@ -1,0 +1,26 @@
+(term
+    (LP RP LB RB lambda T F let and or not cons if define quote eqv?
+        equal? car cdr apply eval + - * / exit garbage-collect
+        print integer? float? number? string? symbol? list?
+        procedure? boolean? closure? while set! > < )
+    nonterm
+    ((%BOOL (or T F))
+     (NAME %SYM)
+     (VAR %SYM)
+     (PRIM (or eqv? and or not cons 
+               equal? car cdr apply eval + - * / exit garbage-collect
+               print integer? float? number? string? symbol? list?
+               procedure? boolean? closure? while set! > < ))
+     (DATUM (LP quote (or AEXPR EXPR) RP))
+     (FUN (LP lambda LP (+ VAR) RP EXPR RP))
+     (DEF (LP define (or (LP %SYM (+ VAR)) %SYM) RP EXPR RP))
+     (IF (LP if EXPR EXPR EXPR RP))
+     (APP (LP (or CEXPR FUN %SYM) (+ EXPR) RP))
+     (APP_PRIM (LP PRIM (+ EXPR) RP))
+     (AEXPR (or FUN VAR %NUM %BOOL PRIM DATUM))
+     (LET_BIND (LB %SYM EXPR RB)) 
+     (LET (LP let LP (* LET_BIND) RP EXPR RP))
+     (CEXPR (or APP LET APP_PRIM))
+     (EXPR (or CEXPR AEXPR))
+     (PROG ((+ (or EXPR FUN_DEF))))
+    ))
