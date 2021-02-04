@@ -308,7 +308,7 @@
     tname
     "token mapping file path"
     (token-map (list->hash (read (open-input-file tname))))]
-   [("-t" "--top-rule")
+   [("-r" "--rule")
     erule
     "entrance top rule"
     (top-rule-name (string->symbol erule))]

@@ -22,5 +22,5 @@
      (LET (LP let LP (* LET_BIND) RP EXPR RP))
      (CEXPR (or APP LET APP_PRIM))
      (EXPR (or CEXPR AEXPR))
-     (PROG ((+ (or EXPR FUN_DEF))))
+     (PROG ((+ (or EXPR DEF))))
     ))
