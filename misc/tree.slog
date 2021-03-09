@@ -1,0 +1,22 @@
+;; Write a function (tree-path t elt) that returns a list of either ‘left,
+;; ‘right, or ‘here that computes the path into the tree for some element. 
+;; Your function should return the empty list if the element is not 
+;; present in the tree.
+
+;; tree node with id ..., contain val ... has left sub tree ... and right sub tree ...
+(node 0 10
+      (node 1 5 (empty 2) (empty 3))
+      (node 4 20
+            (node 5 12 (empty 6) (empty 7))
+            (empty 8)))
+
+;; elt is at the ...of a tree
+(tree-path elt "here" ?(node id elt _ _))
+
+[(tree-path elt "left" ?(node _ _ left _))
+ <--
+ (tree-path elt _ left)]
+
+[(tree-path elt "right" ?(node _ _ _ right))
+ <--
+ (tree-path elt _ right)]

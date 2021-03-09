@@ -63,17 +63,29 @@ Hint Constructors eval : core.
 Hint Constructors has_type : core.
 Hint Constructors value : core.
 
-Theorem e_progress0 : forall e T Γ,
+Local Open Scope string_scope.
+
+Theorem e_progress : forall e T Γ,
     has_type Γ e T ->
     value e \/ (exists γ, (Γ γ) = 1 -> e = Raise γ) \/ exists e', eval e e'.
 Proof with eauto.
   intros.
   induction H...
-  - right. right.
-    destruct IHhas_type1.
-    inversion H2; subst...
-    destruct H2.
-    inversion H; subst... 
+  - inversion H; subst...
+    destruct IHhas_type1. inversion H5.
+    destruct H5. destruct H5.
+    right. left. exists x. intros. apply H5 in H6. discriminate H6.
+    right. right. destruct H5...
+    destruct IHhas_type1. inversion H5.
+    destruct H5. destruct H5.
+    right. left. exists x. intros. apply H5 in H6. discriminate H6.
+    right. right. destruct H5...
+  - inversion H0; subst...
+    destruct IHhas_type1. inversion H3.
+    destruct H3. destruct H3.
+    (* need some related to string eqb *)
+    Admitted.
+
 
 (* Theorem e_progress : forall e T Γ, *)
 (*     has_type Γ e T -> *)
