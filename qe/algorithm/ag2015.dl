@@ -1,0 +1,60 @@
+// let try some graph algorithm using datalog
+//  the is a example graph problem in SU's QE exam
+// problem is :
+// G is Directed Acyclic graph
+// function sumLensG : { 2, ...  , n} → N as follows: 
+// sumLensG(v) = Σ{l(s,t): (s,t) is an edge  on  some  G-path  from 1 to v }.
+
+/////////////////////////////////////////////////////////////////////
+// encode example in problem to IDB
+.decl edge(From:symbol, To:symbol, Value:number)
+// .input edge
+edge("node1", "node4", 3).
+edge("node1", "node3", 2).
+edge("node2", "node3", 1).
+edge("node4", "node6", 200).
+edge("node4", "node5", 20).
+edge("node3", "node5", 10).
+edge("node5", "node6", 100).
+
+.decl node(Node: symbol)
+node(N) :- edge(N, _, _).
+node(N) :- edge(_, N, _ ).
+//////////////////////////////////////////////////////////////////////
+
+.decl path(From:symbol, To:symbol)
+
+.decl sumLensG(Node: symbol, Value: number)
+.output sumLensG
+
+//  first lets define what is path
+path(From, To) :- edge(From, To, _).
+path(From, To) :- path(From, Mid), path(Mid, To).
+
+// then we can define "an node on path"
+// ... is a node on the path from ... to ... 
+.decl nodeOnPath(Node: symbol, From: symbol, To: symbol)
+nodeOnPath(From, From, To) :- path(From, To).
+nodeOnPath(To, From, To) :- path(From, To).
+nodeOnPath(N, From, To) :- path(From, N), path(N, To).
+
+// then, edge on path
+// edge (from ... to ...) is an edge on the path from ... to ...
+.decl edgeOnPath(EFrom: symbol, ETo: symbol, PFrom: symbol, PTo: symbol)
+edgeOnPath(Ef, Et, Pf, Pt) :-
+    nodeOnPath(Ef, Pf, Pt),
+    nodeOnPath(Et, Pf, Pt),
+    edge(Ef, Et, _).
+
+// the sum of all edge on path
+sumLensG(N, V) :-
+    node(N), N != "node1",
+    V = sum Ev : {edgeOnPath(Ef, Et, "node1", N), edge(Ef, Et, Ev)}.
+
+// Justify time complexity
+// from the definition of path we can see:
+// base case cover all edge E,
+// inductive step, think about index selection in database, we only to join same Mid
+// so we need V times join select on every possible node(we can see by definition of node)
+// nodeOnPath and  edgeOnPath can be inlined, and we are selecting on path
+// finally add up need V times, so the running time is O(V+E)
