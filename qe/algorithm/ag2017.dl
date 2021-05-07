@@ -1,0 +1,96 @@
+// this is a example of how we solve dynamic programing problem using datalog
+// the main idea is, the key of DP is reduce the problem into a graph, which is
+// exact what we want in datalog/prolog
+
+// the original problem is in SU's 2017 QE exam
+
+// You have  a sequence  of n buckets.  Each  bucket Bi contains  three  items,  
+// where each  item  has  some  value  and  belongs  to  some  category.  Multiple  
+// items  may  belong  to  the  same category.   Your job  is  to  select  exactly  
+// one  item  from  each  bucket  so  that  the  total  value  of  the selected  
+// items  is maximized,  but  such  that  no  two  items  selected  from  adjacent  
+// buckets  belong  to the  same category. 
+
+//Design  an  algorithm to determine  which  item  should  be  selected  from  
+// each  bucket  to  maximize the  total  value. If there  is no  solution,  your 
+// algorithm  should  state  this.
+
+// Yihao Sun
+// 2021 Syracuse
+
+// example test case
+// bucket 1: (c1, 200g) (c1, 300g) (c3, 150g)
+// bucket 2: (c1: 300g) (c2, 200g) (c3, 200g)
+// bucket 3: (c1: 500g) (c3, 400g) (c3, 200g)
+// bucket 4: (c2: 300g) (c1, 200g) (c1, 500g)
+// bucket 5: (c3: 200g) (c1, 300g) (c2, 400g)
+.type bucket <: number
+// .type item = [
+//     category : symbol,
+//     weight: number
+// ]
+
+// item has category ... and weight ... is in bucket ...
+.decl InBucket(category: symbol, weight: number, bk: bucket)
+InBucket("c1", 200, 1).
+InBucket("c1", 300, 1).
+InBucket("c3", 150, 1).
+InBucket("c1", 300, 2).
+InBucket("c2", 200, 2).
+InBucket("c3", 200, 2).
+InBucket("c1", 500, 3).
+InBucket("c3", 400, 3).
+InBucket("c3", 200, 3).
+InBucket("c2", 400, 4).
+InBucket("c1", 200, 4).
+InBucket("c1", 500, 4).
+InBucket("c3", 200, 5).
+InBucket("c1", 300, 5).
+InBucket("c2", 400, 5).
+
+// reduce the problem into graph
+// we can think of every unique combination of bucket + possible selected item as
+// node, and connect them by by possible sequecial bucket 
+// it is clear to see the graph is linearized by bucket order
+// then using this create EDB
+
+// the node in the graph is the bucket + category + selected item weight, let use union type
+// main reason in language perspective of view is I don't want to use id in later
+.type node = [
+    bucket : bucket,
+    category : symbol,
+    weight: number
+]
+.decl Node(n: node)
+// if same category, we always pick the heaviest
+Node([bucket, category, max_weight]) :-
+    InBucket(category, _, bucket),
+    max_weight = max w : {InBucket(category, w, bucket)}.
+
+
+.decl Edge(from: node, to: node)
+// .output Edge
+// let connect all possible node !
+// connect all node contain sequencial bucket but not same selected category
+Edge([b, c1, w1], [b+1, c2, w2]) :-
+    Node([b, c1, w1]),
+    Node([b+1, c2, w2]),
+    c1 != c2.
+Edge([1, c, w], [1, c, w]) :- Node([1, c, w]).
+
+// then we are going to find longest path in a DAG (slightly different, in this case
+// all weight of edge is put into weight)
+.decl PathLen(from: node, to: node, len: number)
+.output PathLen
+PathLen(f, t, w) :- Edge(f, t), f = t, f = [b, c, w].
+PathLen(f, t, w1+w2) :- 
+    Edge(f, t), f != t, 
+    f = [b1, c1, w1], t = [b2, c2, w2].
+PathLen(f, t, l1+l2-w) :- 
+    PathLen(f, mid, l1), 
+    PathLen(mid, t, l2),
+    mid = [b, c, w].
+    
+.decl LongestPath(n: number)
+.output LongestPath
+LongestPath(n) :- n = max l : PathLen(_, _, l).
