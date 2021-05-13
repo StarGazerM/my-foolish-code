@@ -1,0 +1,10 @@
+
+.type foo = [part1: number, part2: number]
+
+.decl Bar(f: foo)
+Bar([1,2]).
+Bar([2,3]).
+
+.decl MaxFoo1(n: number)
+.output MaxFoo1
+MaxFoo1(n) :- n = max t : Bar([t, _]).
